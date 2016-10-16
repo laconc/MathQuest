@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Buzz Aldrin",
+    "username": "buzz",
+    "pass": "1234"
+  },
+  {
+    "name": "Neil Armstrong",
+    "username": "neil",
+    "pass": "1234"
+  }
+]

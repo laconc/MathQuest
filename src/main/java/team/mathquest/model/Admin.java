@@ -1,14 +1,14 @@
 package team.mathquest.model;
 
-public class User extends Account {
-    // TODO: needs a dateJoined object
+public class Admin extends Account {
+    // TODO: create the rest of the objects
 
     /**
      * This constructor creates an account with the default password '1234'.
      * Uses the constructor from Account.
      *
      */
-    User(String name, String username) {
+    Admin(String name, String username) {
         super(name, username);
     }
 
@@ -17,12 +17,12 @@ public class User extends Account {
      * Uses the constructor from Account.
      *
      */
-    User(String name, String username, String pass) {
+    Admin(String name, String username, String pass) {
         super(name, username, pass);
     }
 
     /**
-     * @return statistics for this user
+     * @return accesses the statistics for the users that they are overseeing
      */
     @Override
     public String viewStats() {

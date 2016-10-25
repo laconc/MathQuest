@@ -26,7 +26,7 @@ public class MainApp extends Application {
     * Displays the login window's UI.
     *
     */
-   public void showLogin() {
+    public void showLogin() {
         try {
             // prepares the Login Scene
             FXMLLoader loader = new FXMLLoader();
@@ -54,7 +54,7 @@ public class MainApp extends Application {
     *
     * @param account the account that was used to log in
     */
-   public void showMainMenu(Account account) {
+    public void showMainMenu(Account account) {
         try {
             // prepares the Menu scene
             FXMLLoader loader = new FXMLLoader();

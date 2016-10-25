@@ -56,9 +56,7 @@ public class LoginController implements Initializable {
      * @param rb
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-
-    }
+    public void initialize(URL url, ResourceBundle rb) {}
 
     /**
      * Is called by the main application to give a reference back to itself.

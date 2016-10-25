@@ -30,26 +30,6 @@ public class MenuController implements Initializable {
     private Account account;
     
     /**
-     * Initializes the controller class. This method is automatically called
-     * after the FXML file has been loaded.
-     * @param url
-     * @param rb
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        
-    }
-    
-    /**
-     * Is called by the main application to give a reference back to itself.
-     * 
-     * @param mainApp the main application
-     */
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
-    }
-
-    /**
      * @return the account
      */
     public Account getAccount() {
@@ -62,5 +42,23 @@ public class MenuController implements Initializable {
     public void setAccount(Account account) {
         this.account = account;
         nameLabel.setText(account.getName());
+    }
+    
+    /**
+     * Initializes the controller class. This method is automatically called
+     * after the FXML file has been loaded.
+     * @param url
+     * @param rb
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {}
+    
+    /**
+     * Is called by the main application to give a reference back to itself.
+     * 
+     * @param mainApp the main application
+     */
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
     }
 }

@@ -1,14 +1,12 @@
 package team.mathquest;
 
 import team.mathquest.model.Account;
+import team.mathquest.model.Controller;
 import team.mathquest.model.ReaderWriter;
 
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -17,7 +15,7 @@ import javafx.scene.control.TextField;
  * Controller for the login screen.
  *
  */
-public class LoginController implements Initializable {
+public class LoginController extends Controller {
 
     @FXML
     private Label errorLabel;
@@ -26,7 +24,6 @@ public class LoginController implements Initializable {
     @FXML
     private PasswordField passField;
 
-    private MainApp mainApp;
     private ReaderWriter rw = new ReaderWriter();
     private ArrayList<Account> accounts;
 
@@ -43,27 +40,9 @@ public class LoginController implements Initializable {
         for (Account account : accounts) {
             if (usernameField.getText().equals(account.getUsername())
                     && passField.getText().equals(account.getPassword()))
-                mainApp.showMainMenu(account);
+                super.getMainApp().showMainMenu(account);
         }
         // displays the error if the account info doesn't match
         errorLabel.setText("Incorrect!");
-    }
-
-    /**
-     * Initializes the controller class. This method is automatically called
-     * after the FXML file has been loaded.
-     * @param url
-     * @param rb
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {}
-
-    /**
-     * Is called by the main application to give a reference back to itself.
-     *
-     * @param mainApp the main application
-     */
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
     }
 }

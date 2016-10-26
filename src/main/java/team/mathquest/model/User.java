@@ -8,7 +8,7 @@ public class User extends Account {
      * Uses the constructor from Account.
      *
      */
-    User(String name, String username) {
+    public User(String name, String username) {
         super(name, username);
     }
 
@@ -17,7 +17,7 @@ public class User extends Account {
      * Uses the constructor from Account.
      *
      */
-    User(String name, String username, String pass) {
+    public User(String name, String username, String pass) {
         super(name, username, pass);
     }
 

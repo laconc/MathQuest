@@ -9,7 +9,7 @@
    <children>
       <Label fx:id="nameLabel" layoutX="182.0" layoutY="51.0" />
       <Button fx:id="playGameButton" layoutX="155.0" layoutY="128.0" mnemonicParsing="false" text="Play Game!" />
-      <Button fx:id="optionsButton" layoutX="166.0" layoutY="215.0" mnemonicParsing="false" text="Options" />
+      <Button fx:id="optionsButton" layoutX="166.0" layoutY="215.0" mnemonicParsing="false" onAction="#handleOptionsButtonAction" text="Options" />
       <Button fx:id="statsButton" layoutX="161.0" layoutY="303.0" mnemonicParsing="false" text="Statistics" />
       <Button fx:id="adminToolsButton" layoutX="152.0" layoutY="384.0" mnemonicParsing="false" text="Admin Tools" />
    </children>

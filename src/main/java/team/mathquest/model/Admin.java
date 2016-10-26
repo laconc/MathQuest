@@ -2,13 +2,13 @@ package team.mathquest.model;
 
 public class Admin extends Account {
     // TODO: create the rest of the objects
-
+    
     /**
      * This constructor creates an account with the default password '1234'.
      * Uses the constructor from Account.
      *
      */
-    Admin(String name, String username) {
+    public Admin(String name, String username) {
         super(name, username);
     }
 
@@ -17,7 +17,7 @@ public class Admin extends Account {
      * Uses the constructor from Account.
      *
      */
-    Admin(String name, String username, String pass) {
+    public Admin(String name, String username, String pass) {
         super(name, username, pass);
     }
 

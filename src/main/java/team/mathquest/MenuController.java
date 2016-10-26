@@ -1,11 +1,10 @@
 package team.mathquest;
 
+import javafx.event.ActionEvent;
 import team.mathquest.model.Account;
+import team.mathquest.model.Controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
@@ -13,7 +12,7 @@ import javafx.scene.control.Label;
  * Controller for the main menu screen.
  *
  */
-public class MenuController implements Initializable {
+public class MenuController extends Controller {
 
     @FXML
     private Label nameLabel;
@@ -26,39 +25,21 @@ public class MenuController implements Initializable {
     @FXML
     private Button adminToolsButton;
     
-    private MainApp mainApp;
-    private Account account;
-    
-    /**
-     * @return the account
-     */
-    public Account getAccount() {
-        return account;
-    }
-
     /**
      * @param account the account to set
      */
+    @Override
     public void setAccount(Account account) {
-        this.account = account;
+        super.setAccount(account);
         nameLabel.setText(account.getName());
     }
     
     /**
-     * Initializes the controller class. This method is automatically called
-     * after the FXML file has been loaded.
-     * @param url
-     * @param rb
+     * The actions performed when the options button is pressed.
+     *
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {}
-    
-    /**
-     * Is called by the main application to give a reference back to itself.
-     * 
-     * @param mainApp the main application
-     */
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
+    @FXML
+    private void handleOptionsButtonAction(ActionEvent event) {
+        super.getMainApp().showOptions(super.getAccount());
     }
 }

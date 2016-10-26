@@ -9,7 +9,7 @@ public abstract class Account {
      * This constructor creates an account with the default password '1234'.
      * 
      */
-    Account(String name, String username) {
+    public Account(String name, String username) {
         this.name = name;
         this.username = username;
         this.pass = "1234";
@@ -19,7 +19,7 @@ public abstract class Account {
      * This constructor creates an account with the password given.
      * 
      */
-    Account(String name, String username, String pass) {
+    public Account(String name, String username, String pass) {
         this.name = name;
         this.username = username;
         this.pass = pass;

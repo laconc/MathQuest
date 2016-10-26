@@ -1,6 +1,7 @@
 package team.mathquest;
 
 import team.mathquest.model.Account;
+import team.mathquest.model.Controller;
 
 import static javafx.application.Application.launch;
 import java.io.IOException;
@@ -18,7 +19,7 @@ public class MainApp extends Application {
     public void start(Stage stage) throws Exception {
         mainStage = stage;
         mainStage.setTitle("MathQuest");
-
+        
         showLogin();
     }
 
@@ -27,26 +28,8 @@ public class MainApp extends Application {
     *
     */
     public void showLogin() {
-        try {
-            // prepares the Login Scene
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("/fxml/Login.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
-            Scene scene = new Scene(page);
-            // scene.getStylesheets().add("/styles/Styles.css");
-
-            // loads the Login scene
-            mainStage.setScene(scene);
-
-            // gives the controller access to the main app
-            LoginController controller = loader.getController();
-            controller.setMainApp(this);
-
-            mainStage.show();
-
-        } catch (IOException e) {
-            System.out.println("Error loading the login window.");
-        }
+        String resource = "/fxml/Login.fxml";
+        swapScene(resource, null);
     }
 
     /**
@@ -55,26 +38,65 @@ public class MainApp extends Application {
     * @param account the account that was used to log in
     */
     public void showMainMenu(Account account) {
+        String resource = "/fxml/Menu.fxml";
+        swapScene(resource, account);
+    }
+    
+    // TODO: Write the relevant class and resource
+    public void showLevelSelect(Account account) {
+        String resource = "/fxml/LevelSelect.fxml";
+        swapScene(resource, account);
+    }
+    
+    // TODO: Write the relevant class and resource
+    public void showGame(Account account) {
+        String resource = "/fxml/Game.fxml";
+        swapScene(resource, account);
+    }
+    
+    // TODO: Write the relevant class and resource
+    public void showOptions(Account account) {
+        String resource = "/fxml/Options.fxml";
+        swapScene(resource, account);
+    }
+    
+    // TODO: Write the relevant class and resource
+    public void showAdminTools(Account account) {
+        String resource = "/fxml/AdminTools.fxml";
+        swapScene(resource, account);
+    }
+    
+    // TODO: Write the relevant class and resource
+    public void showQuitGame(Account account) {
+        String resource = "/fxml/QuitGame.fxml";
+        swapScene(resource, account);
+    }
+    
+    public void swapScene(String resource, Account account) {
         try {
-            // prepares the Menu scene
+            // prepares the new scene
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("/fxml/Menu.fxml"));
+            loader.setLocation(MainApp.class.getResource(resource));
             AnchorPane page = (AnchorPane) loader.load();
             Scene scene = new Scene(page);
+            // scene.getStylesheets().add("/styles/Styles.css");
 
-            // swaps to the Menu scene
+            // swaps to the new scene
             mainStage.close(); // closing it first to force it to re-center
             mainStage.setScene(scene);
             mainStage.show();
 
             // gives the controller access to the main app & passes the
             // account info
-            MenuController controller = loader.getController();
+            Controller controller = loader.getController();
             controller.setMainApp(this);
-            controller.setAccount(account);
+            
+            // account is null prior to login
+            if (account != null)
+                controller.setAccount(account);
 
         } catch (IOException e) {
-            System.out.println("Error loading the main menu.");
+            System.out.println("Error swapping the scene.");
         }
     }
 

@@ -35,7 +35,7 @@ public class MenuController extends Controller {
     }
     
     /**
-     * The actions performed when the options button is pressed.
+     * Takes the user to the Options screen.
      *
      */
     @FXML

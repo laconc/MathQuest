@@ -28,7 +28,8 @@ public class LoginController extends Controller {
     private ArrayList<Account> accounts;
 
     /**
-     * The actions performed when the login button is pressed.
+     * Logs in the user if the entered credentials are correct, returns an
+     * error otherwise.
      *
      */
     @FXML

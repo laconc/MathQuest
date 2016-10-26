@@ -10,6 +10,10 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+/**
+ * Reads and writes the state to JSON files.
+ *
+ */
 public class ReaderWriter {
 
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();

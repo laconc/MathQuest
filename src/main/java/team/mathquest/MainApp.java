@@ -54,7 +54,11 @@ public class MainApp extends Application {
         swapScene(resource, account);
     }
     
-    // TODO: Write the relevant class and resource
+    /**
+    * Displays the Options screen.
+    *
+    * @param account the account that was used to log in
+    */
     public void showOptions(Account account) {
         String resource = "/fxml/Options.fxml";
         swapScene(resource, account);
@@ -72,7 +76,13 @@ public class MainApp extends Application {
         swapScene(resource, account);
     }
     
-    public void swapScene(String resource, Account account) {
+    /**
+    * Changes the active scene and controller.
+    * 
+    * @param resource the FXML file to load
+    * @param account the account that was used to log in
+    */
+    private void swapScene(String resource, Account account) {
         try {
             // prepares the new scene
             FXMLLoader loader = new FXMLLoader();

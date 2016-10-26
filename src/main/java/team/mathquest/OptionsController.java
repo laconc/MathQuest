@@ -1,5 +1,7 @@
 package team.mathquest;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import team.mathquest.model.Controller;
 
 import javafx.event.ActionEvent;
@@ -26,8 +28,19 @@ public class OptionsController extends Controller {
     private CheckBox divCheckbox;
     
     /**
-     * The actions performed when the main menu button is pressed.
-     * > Returns the user to the main menu
+     * Initializes the controller class. This method is automatically called
+     * after the FXML file has been loaded.
+     * @param url
+     * @param rb
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // If account settings isLocked, gray out the radio buttons and
+        // the checkboxes
+    }
+    
+    /**
+     * Returns the user to the main menu.
      *
      */
     @FXML
@@ -36,8 +49,7 @@ public class OptionsController extends Controller {
     }
     
     /**
-     * The actions performed when the OK button is pressed.
-     * > TODO: Save the settings
+     * Saves the user's settings and return them to the main menu.
      *
      */
     @FXML

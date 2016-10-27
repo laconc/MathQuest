@@ -1,9 +1,9 @@
 package team.mathquest;
 
-import javafx.event.ActionEvent;
 import team.mathquest.model.Account;
 import team.mathquest.model.Controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -40,6 +40,6 @@ public class MenuController extends Controller {
      */
     @FXML
     private void handleOptionsButtonAction(ActionEvent event) {
-        super.getMainApp().showOptions(super.getAccount());
+        getMainApp().showOptions(getAccount());
     }
 }

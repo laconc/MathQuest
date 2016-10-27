@@ -1,9 +1,10 @@
 package team.mathquest.model;
 
+import team.mathquest.MainApp;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
-import team.mathquest.MainApp;
 
 public abstract class Controller implements Initializable {
     

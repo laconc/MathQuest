@@ -100,10 +100,7 @@ public class MainApp extends Application {
             // account info
             Controller controller = loader.getController();
             controller.setMainApp(this);
-            
-            // account is null prior to login
-            if (account != null)
-                controller.setAccount(account);
+            controller.setAccount(account);
 
         } catch (IOException e) {
             System.out.println("Error swapping the scene.");

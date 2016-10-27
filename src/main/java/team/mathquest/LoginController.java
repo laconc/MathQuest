@@ -41,7 +41,7 @@ public class LoginController extends Controller {
         for (Account account : accounts) {
             if (usernameField.getText().equals(account.getUsername())
                     && passField.getText().equals(account.getPassword()))
-                super.getMainApp().showMainMenu(account);
+                getMainApp().showMainMenu(account);
         }
         // displays the error if the account info doesn't match
         errorLabel.setText("Incorrect!");

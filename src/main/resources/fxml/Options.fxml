@@ -4,16 +4,19 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="335.0" prefWidth="476.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.65" fx:controller="team.mathquest.OptionsController">
+<AnchorPane id="AnchorPane" prefHeight="335.0" prefWidth="476.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.mathquest.OptionsController">
    <children>
       <Label layoutX="99.0" layoutY="75.0" text="Difficulty" />
       <Label layoutX="324.0" layoutY="75.0" text="Problems" />
-      <RadioButton fx:id="easyButton" layoutX="99.0" layoutY="109.0" mnemonicParsing="false" text="Easy" />
-      <RadioButton fx:id="mediumButton" layoutX="99.0" layoutY="137.0" mnemonicParsing="false" text="Normal" />
-      <RadioButton fx:id="hardButton" layoutX="99.0" layoutY="167.0" mnemonicParsing="false" text="Hard" />
+      <RadioButton fx:id="easyButton" layoutX="99.0" layoutY="109.0" mnemonicParsing="false" text="Easy">
+         <toggleGroup>
+            <ToggleGroup fx:id="difficultyGroup" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="normalButton" layoutX="99.0" layoutY="137.0" mnemonicParsing="false" text="Normal" toggleGroup="$difficultyGroup" />
+      <RadioButton fx:id="hardButton" layoutX="99.0" layoutY="167.0" mnemonicParsing="false" text="Hard" toggleGroup="$difficultyGroup" />
       
       <CheckBox fx:id="addCheckbox" layoutX="323.0" layoutY="109.0" mnemonicParsing="false" text="Addition" />
       <CheckBox fx:id="subCheckbox" layoutX="323.0" layoutY="137.0" mnemonicParsing="false" text="Subtraction" />

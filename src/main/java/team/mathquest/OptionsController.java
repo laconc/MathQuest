@@ -1,13 +1,15 @@
 package team.mathquest;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import team.mathquest.model.Controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 
 /**
  *  Controller for the options screen.
@@ -18,6 +20,14 @@ public class OptionsController extends Controller {
     private Button mainMenuButton;
     @FXML
     private Button okButton;
+    @FXML
+    private ToggleGroup difficultyGroup;
+    @FXML
+    private RadioButton easyButton;
+    @FXML
+    private RadioButton normalButton;
+    @FXML
+    private RadioButton hardButton;
     @FXML
     private CheckBox addCheckbox;
     @FXML
@@ -45,7 +55,7 @@ public class OptionsController extends Controller {
      */
     @FXML
     private void handleMainMenuButtonAction(ActionEvent event) {
-        super.getMainApp().showMainMenu(super.getAccount());
+        getMainApp().showMainMenu(getAccount());
     }
     
     /**
@@ -55,6 +65,6 @@ public class OptionsController extends Controller {
     @FXML
     private void handleOkButtonAction(ActionEvent event) {
         // TODO: Save the settings
-        super.getMainApp().showMainMenu(super.getAccount());
+        getMainApp().showMainMenu(getAccount());
     }
 }

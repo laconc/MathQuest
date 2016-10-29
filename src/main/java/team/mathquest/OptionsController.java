@@ -100,7 +100,7 @@ public class OptionsController extends Controller {
     @FXML
     private void handleOkButtonAction(ActionEvent event) {
         
-        // the difficulty
+        // the difficulty setting
         if (difficultyGroup.getSelectedToggle() == easyButton)
             ((User) getAccount()).getOptions()
                     .setDifficulty(Option.Difficulty.EASY);
@@ -113,7 +113,7 @@ public class OptionsController extends Controller {
             ((User) getAccount()).getOptions()
                     .setDifficulty(Option.Difficulty.HARD);
         
-        //the problem types
+        //the problem-types setting
         if (addCheckbox.isSelected())
             ((User) getAccount()).getOptions().setAdditionFlag(true);
         else
@@ -134,6 +134,7 @@ public class OptionsController extends Controller {
         else
             ((User) getAccount()).getOptions().setDivisionFlag(false);
         
+        // write to file
         rw.updateUserList((User) getAccount());
         displaySaveConfirmation();
         

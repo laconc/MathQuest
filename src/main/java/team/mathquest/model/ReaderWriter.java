@@ -111,4 +111,28 @@ public class ReaderWriter {
             System.out.println("Failed to write Admins.json.");
         }
     }
+    
+    /**
+    * Updates an admin account.
+    *
+    * @param account the account to update
+    */
+    public void updateAdminList(User account) {
+        try {
+            reader = new BufferedReader(new FileReader("Admins.json"));
+            accounts = gson.fromJson(reader, adminType);
+            
+            for (int i = 0; i < accounts.size(); i++) {
+                if (accounts.get(i).getUsername().equals(account.getUsername()))
+                    accounts.set(i, account);
+            }
+            
+            json = gson.toJson(accounts, adminType);
+            writer = new FileWriter("Admins.json");
+            writer.write(json);
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Failed to update Admins.json.");
+        }
+    }
 }

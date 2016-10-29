@@ -1,11 +1,15 @@
 package team.mathquest;
 
+import team.mathquest.model.Account;
 import team.mathquest.model.Controller;
+import team.mathquest.model.Option;
+import team.mathquest.model.User;
+import team.mathquest.model.ReaderWriter;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
@@ -37,16 +41,47 @@ public class OptionsController extends Controller {
     @FXML
     private CheckBox divCheckbox;
     
-    /**
-     * Initializes the controller class. This method is automatically called
-     * after the FXML file has been loaded.
-     * @param url
-     * @param rb
-     */
+    private Alert alert;
+    private ReaderWriter rw = new ReaderWriter();
+    
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // If account settings isLocked, gray out the radio buttons and
-        // the checkboxes
+    public void start(Account account) {
+        super.start(account);
+        
+        // If the isLocked flag is enabled, grays out the radio buttons
+        // and the checkboxes
+        if (((User) getAccount()).getOptions().isLocked()) {
+            easyButton.setDisable(true);
+            normalButton.setDisable(true);
+            hardButton.setDisable(true);
+            
+            addCheckbox.setDisable(true);
+            subCheckbox.setDisable(true);
+            mulCheckbox.setDisable(true);
+            divCheckbox.setDisable(true);
+        }
+        
+        // selects the currently-selected difficulty
+        switch (((User) getAccount()).getOptions().getDifficulty()) {
+            case EASY:
+                easyButton.setSelected(true);
+                break;
+            case NORMAL:
+                normalButton.setSelected(true);
+                break;
+            case HARD:
+                hardButton.setSelected(true);
+        }
+        
+        // selects the currently-selected problem types
+        if (((User) getAccount()).getOptions().getAdditionFlag())
+            addCheckbox.setSelected(true);
+        if (((User) getAccount()).getOptions().getSubtractionFlag())
+            subCheckbox.setSelected(true);
+        if (((User) getAccount()).getOptions().getMultiplicationFlag())
+            mulCheckbox.setSelected(true);
+        if (((User) getAccount()).getOptions().getDivisionFlag())
+            divCheckbox.setSelected(true);
     }
     
     /**
@@ -59,12 +94,58 @@ public class OptionsController extends Controller {
     }
     
     /**
-     * Saves the user's settings and return them to the main menu.
+     * Saves the user's settings and returns them to the main menu.
      *
      */
     @FXML
     private void handleOkButtonAction(ActionEvent event) {
-        // TODO: Save the settings
+        
+        // the difficulty
+        if (difficultyGroup.getSelectedToggle() == easyButton)
+            ((User) getAccount()).getOptions()
+                    .setDifficulty(Option.Difficulty.EASY);
+        
+        else if (difficultyGroup.getSelectedToggle() == normalButton)
+            ((User) getAccount()).getOptions()
+                    .setDifficulty(Option.Difficulty.NORMAL);
+        
+        else if (difficultyGroup.getSelectedToggle() == hardButton)
+            ((User) getAccount()).getOptions()
+                    .setDifficulty(Option.Difficulty.HARD);
+        
+        //the problem types
+        if (addCheckbox.isSelected())
+            ((User) getAccount()).getOptions().setAdditionFlag(true);
+        else
+            ((User) getAccount()).getOptions().setAdditionFlag(false);
+        
+        if (subCheckbox.isSelected())
+            ((User) getAccount()).getOptions().setSubtractionFlag(true);
+        else
+            ((User) getAccount()).getOptions().setSubtractionFlag(false);
+            
+        if (mulCheckbox.isSelected())
+            ((User) getAccount()).getOptions().setMultiplicationFlag(true);
+        else
+            ((User) getAccount()).getOptions().setMultiplicationFlag(false);
+            
+        if (divCheckbox.isSelected())
+            ((User) getAccount()).getOptions().setDivisionFlag(true);
+        else
+            ((User) getAccount()).getOptions().setDivisionFlag(false);
+        
+        rw.updateUserList((User) getAccount());
+        displaySaveConfirmation();
+        
+        // sends the user back to the main menu
         getMainApp().showMainMenu(getAccount());
+    }
+    
+    private void displaySaveConfirmation() {
+        alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Save Confirmation");
+        alert.setHeaderText(null);
+        alert.setContentText("Your selections were saved!");
+        alert.showAndWait();
     }
 }

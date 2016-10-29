@@ -29,9 +29,16 @@ public class MenuController extends Controller {
      * @param account the account to set
      */
     @Override
-    public void setAccount(Account account) {
+    public void start(Account account) {
+        
         super.setAccount(account);
         nameLabel.setText(account.getName());
+        
+        if (getAccount().getType() == 'a') // admin-specific code
+            optionsButton.setDisable(true);
+        
+        else if (getAccount().getType() == 'u') // user-specific code
+            adminToolsButton.setDisable(true);
     }
     
     /**

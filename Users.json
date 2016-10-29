@@ -1,20 +1,80 @@
 [
   {
+    "dateJoined": {
+      "year": 2016,
+      "month": 10,
+      "day": 29
+    },
+    "options": {
+      "locked": false,
+      "difficulty": "EASY",
+      "problemType": {
+        "add": true,
+        "div": false,
+        "sub": true,
+        "mul": false
+      }
+    },
     "name": "Dashiel Lopez Mendez",
     "username": "dash",
     "pass": "1234"
   },
   {
+    "dateJoined": {
+      "year": 2016,
+      "month": 10,
+      "day": 29
+    },
+    "options": {
+      "locked": false,
+      "difficulty": "EASY",
+      "problemType": {
+        "add": true,
+        "div": false,
+        "sub": false,
+        "mul": false
+      }
+    },
     "name": "Athena Kao",
     "username": "athena",
     "pass": "1234"
   },
   {
+    "dateJoined": {
+      "year": 2016,
+      "month": 10,
+      "day": 29
+    },
+    "options": {
+      "locked": false,
+      "difficulty": "EASY",
+      "problemType": {
+        "add": true,
+        "div": false,
+        "sub": false,
+        "mul": false
+      }
+    },
     "name": "Emily Malnor",
     "username": "emily",
     "pass": "1234"
   },
   {
+    "dateJoined": {
+      "year": 2016,
+      "month": 10,
+      "day": 29
+    },
+    "options": {
+      "locked": false,
+      "difficulty": "EASY",
+      "problemType": {
+        "add": true,
+        "div": false,
+        "sub": false,
+        "mul": false
+      }
+    },
     "name": "Greg Luckenbach",
     "username": "greg",
     "pass": "1234"

@@ -25,6 +25,11 @@ public abstract class Account {
         this.pass = pass;
     }
     
+    /**
+     * @return the type of account, 'a' for admin, 'u' for user
+     */
+    public abstract char getType();
+    
     public abstract String viewStats();
 
     /**
@@ -35,7 +40,7 @@ public abstract class Account {
     }
 
     /**
-     * @param name sets the account's name
+     * @param name the account name to set
      */
     public void setName(String name) {
         this.name = name;
@@ -49,7 +54,7 @@ public abstract class Account {
     }
 
     /**
-     * @param username sets the account's username
+     * @param username the account username to set
      */
     public void setUsername(String username) {
         this.username = username;
@@ -63,7 +68,7 @@ public abstract class Account {
     }
 
     /**
-     * @param pass sets the account's password
+     * @param pass the account password to set
      */
     public void setPass(String pass) {
         this.pass = pass;

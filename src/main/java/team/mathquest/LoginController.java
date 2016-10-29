@@ -25,7 +25,7 @@ public class LoginController extends Controller {
     private PasswordField passField;
 
     private ReaderWriter rw = new ReaderWriter();
-    private ArrayList<Account> accounts;
+    private ArrayList<Account> accounts = new ArrayList<>();
 
     /**
      * Logs in the user if the entered credentials are correct, returns an
@@ -35,7 +35,7 @@ public class LoginController extends Controller {
     @FXML
     private void handleLoginButtonAction(ActionEvent event) {
         // reads the accounts saved in the Users.json & Admins.json file
-        accounts = rw.readUserList();
+        accounts.addAll(rw.readUserList());
         accounts.addAll(rw.readAdminList());
         // check username and password
         for (Account account : accounts) {

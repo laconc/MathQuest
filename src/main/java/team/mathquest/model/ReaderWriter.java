@@ -24,6 +24,7 @@ public class ReaderWriter {
     private BufferedReader reader;
 
     private ArrayList<Account> accounts;
+    private String json;
 
     /**
     * Reads the users from Users.json.
@@ -43,16 +44,40 @@ public class ReaderWriter {
     /**
     * Writes the users to Users.json.
     *
-    * @param users the users to save
+    * @param accounts the users to save
     */
-    public void writeUserList(ArrayList<Account> users) {
-        String json = gson.toJson(users, userType);
+    public void writeUserList(ArrayList<Account> accounts) {
+        json = gson.toJson(accounts, userType);
         try {
             writer = new FileWriter("Users.json");
             writer.write(json);
             writer.close();
         } catch (IOException e) {
             System.out.println("Failed to write Users.json.");
+        }
+    }
+    
+    /**
+    * Updates a user account.
+    *
+    * @param account the account to update
+    */
+    public void updateUserList(User account) {
+        try {
+            reader = new BufferedReader(new FileReader("Users.json"));
+            accounts = gson.fromJson(reader, userType);
+            
+            for (int i = 0; i < accounts.size(); i++) {
+                if (accounts.get(i).getUsername().equals(account.getUsername()))
+                    accounts.set(i, account);
+            }
+            
+            json = gson.toJson(accounts, userType);
+            writer = new FileWriter("Users.json");
+            writer.write(json);
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Failed to update Users.json.");
         }
     }
 
@@ -74,10 +99,10 @@ public class ReaderWriter {
     /**
     * Writes the admins to Admins.json.
     *
-    * @param admins the admins to save
+    * @param accounts the admins to save
     */
-    public void writeAdminList(ArrayList<Account> admins) {
-        String json = gson.toJson(admins, adminType);
+    public void writeAdminList(ArrayList<Account> accounts) {
+        json = gson.toJson(accounts, adminType);
         try {
             writer = new FileWriter("Admins.json");
             writer.write(json);

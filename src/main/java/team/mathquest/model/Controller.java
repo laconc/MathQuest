@@ -2,23 +2,18 @@ package team.mathquest.model;
 
 import team.mathquest.MainApp;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
-
-public abstract class Controller implements Initializable {
+public abstract class Controller {
     
     private Account account;
     private MainApp mainApp;
     
     /**
-     * Initializes the controller class. This method is automatically called
-     * after the FXML file has been loaded.
-     * @param url
-     * @param rb
+     * Initializes the controller class.
+     * @param account the account to set
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {}
+    public void start(Account account) {
+        setAccount(account);
+    }
     
     /**
      * @return the account

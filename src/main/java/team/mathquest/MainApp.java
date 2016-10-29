@@ -100,7 +100,7 @@ public class MainApp extends Application {
             // account info
             Controller controller = loader.getController();
             controller.setMainApp(this);
-            controller.setAccount(account);
+            controller.start(account);
 
         } catch (IOException e) {
             System.out.println("Error swapping the scene.");

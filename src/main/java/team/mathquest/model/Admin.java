@@ -20,12 +20,21 @@ public class Admin extends Account {
     public Admin(String name, String username, String pass) {
         super(name, username, pass);
     }
+    
+    /**
+     * @return the type of account, 'a' for admin, 'u' for user
+     */
+    @Override
+    public char getType() {
+        return 'a';
+    }
 
     /**
      * @return accesses the statistics for the users that they are overseeing
      */
     @Override
     public String viewStats() {
+        // TODO: Write the function
         return "Working on it";
     }
 }

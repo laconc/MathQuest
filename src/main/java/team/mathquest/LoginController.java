@@ -50,7 +50,7 @@ public class LoginController extends Controller {
     }
     
     /**
-     * Display a dialog box when a user clicks 'Forgot Password?'
+     * Displays a dialog box when a user clicks 'Forgot Password?'
      *
      */
     @FXML
@@ -62,7 +62,8 @@ public class LoginController extends Controller {
         alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Forgot Password?");
         alert.setHeaderText(null);
-        alert.setContentText("Contact your local admininstrator so that they may reset your password.");
+        alert.setContentText("Contact your local admininstrator so that "
+                + "they may reset your password.");
         alert.showAndWait();
     }
 }

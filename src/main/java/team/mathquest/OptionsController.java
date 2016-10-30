@@ -10,7 +10,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
@@ -20,10 +19,6 @@ import javafx.scene.control.ToggleGroup;
  *
  */
 public class OptionsController extends Controller {
-    @FXML
-    private Button mainMenuButton;
-    @FXML
-    private Button okButton;
     @FXML
     private ToggleGroup difficultyGroup;
     @FXML

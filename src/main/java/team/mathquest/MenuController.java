@@ -17,11 +17,7 @@ public class MenuController extends Controller {
     @FXML
     private Label nameLabel;
     @FXML
-    private Button playGameButton;
-    @FXML
     private Button optionsButton;
-    @FXML
-    private Button statsButton;
     @FXML
     private Button adminToolsButton;
     

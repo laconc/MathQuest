@@ -24,7 +24,7 @@ public class MainApp extends Application {
     }
 
     /**
-    * Displays the login window's UI.
+    * Displays the Login screen.
     *
     */
     public void showLogin() {
@@ -33,7 +33,7 @@ public class MainApp extends Application {
     }
 
     /**
-    * Displays the main menu's UI.
+    * Displays the Main Menu screen.
     *
     * @param account the account that was used to log in
     */
@@ -42,13 +42,21 @@ public class MainApp extends Application {
         swapScene(resource, account);
     }
     
-    // TODO: Write the relevant class and resource
+    /**
+    * Displays the Level Select screen.
+    *
+    * @param account the account that was used to log in
+    */
     public void showLevelSelect(Account account) {
         String resource = "/fxml/LevelSelect.fxml";
         swapScene(resource, account);
     }
     
-    // TODO: Write the relevant class and resource
+    /**
+    * Displays the Game screen.
+    *
+    * @param account the account that was used to log in
+    */
     public void showGame(Account account) {
         String resource = "/fxml/Game.fxml";
         swapScene(resource, account);
@@ -64,19 +72,31 @@ public class MainApp extends Application {
         swapScene(resource, account);
     }
     
-    // TODO: Write the relevant class and resource
+    /**
+    * Displays the Admin Tools screen.
+    *
+    * @param account the account that was used to log in
+    */
     public void showAdminTools(Account account) {
         String resource = "/fxml/AdminTools.fxml";
         swapScene(resource, account);
     }
     
-    // TODO: Write the relevant class and resource
+    /**
+    * Displays the Quit Game dialog box.
+    *
+    * @param account the account that was used to log in
+    */
     public void showQuitGame(Account account) {
         String resource = "/fxml/QuitGame.fxml";
         swapScene(resource, account);
     }
     
-    // TODO: Write the relevant class and resource
+    /**
+    * Displays the Statistics screen.
+    *
+    * @param account the account that was used to log in
+    */
     public void showStats(Account account) {
         String resource = "/fxml/Stats.fxml";
         swapScene(resource, account);

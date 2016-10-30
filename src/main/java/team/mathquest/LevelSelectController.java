@@ -1,22 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package team.mathquest;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import team.mathquest.model.Account;
 import team.mathquest.model.Controller;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+
 /**
- * FXML Controller class
+ *  Controller for the level select screen.
  *
- * @author gluck
  */
 public class LevelSelectController extends Controller {
 

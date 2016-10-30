@@ -10,6 +10,6 @@
       <Button fx:id="playGameButton" layoutX="68.0" layoutY="68.0" mnemonicParsing="false" onAction="#handlePlayGameButtonAction" prefHeight="81.0" prefWidth="160.0" text="Play Game!" />
       <Button fx:id="optionsButton" layoutX="291.0" layoutY="68.0" mnemonicParsing="false" onAction="#handleOptionsButtonAction" prefHeight="81.0" prefWidth="160.0" text="Options" />
       <Button fx:id="statsButton" layoutX="68.0" layoutY="212.0" mnemonicParsing="false" onAction="#handleStatsButtonAction" prefHeight="81.0" prefWidth="160.0" text="Statistics" />
-      <Button fx:id="adminToolsButton" layoutX="291.0" layoutY="212.0" mnemonicParsing="false" onAction="#handleAdminButtonAction" prefHeight="81.0" prefWidth="160.0" text="Admin Tools" />
+      <Button fx:id="adminToolsButton" layoutX="291.0" layoutY="212.0" mnemonicParsing="false" onAction="#handleAdminToolsButtonAction" prefHeight="81.0" prefWidth="160.0" text="Admin Tools" />
    </children>
 </AnchorPane>

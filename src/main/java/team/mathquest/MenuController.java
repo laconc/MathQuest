@@ -21,9 +21,6 @@ public class MenuController extends Controller {
     @FXML
     private Button adminToolsButton;
     
-    /**
-     * @param account the account to set
-     */
     @Override
     public void start(Account account) {
         
@@ -50,12 +47,12 @@ public class MenuController extends Controller {
      *
      */
     @FXML
-    private void handleAdminButtonAction(ActionEvent event) {
+    private void handleAdminToolsButtonAction(ActionEvent event) {
         getMainApp().showAdminTools(getAccount());
     }
     
     /**
-     * Takes the user to the Level select screen.
+     * Takes the user to the Level Select screen.
      *
      */
     @FXML
@@ -64,7 +61,7 @@ public class MenuController extends Controller {
     }
     
     /**
-     * Takes the user to the Level select screen.
+     * Takes the user to the Statistics screen.
      *
      */
     @FXML

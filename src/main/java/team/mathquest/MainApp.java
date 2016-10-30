@@ -76,6 +76,12 @@ public class MainApp extends Application {
         swapScene(resource, account);
     }
     
+    // TODO: Write the relevant class and resource
+    public void showStats(Account account) {
+        String resource = "/fxml/Stats.fxml";
+        swapScene(resource, account);
+    }
+    
     /**
     * Changes the active scene and controller.
     * 

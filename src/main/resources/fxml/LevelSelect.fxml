@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="356.0" prefWidth="240.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.mathquest.LevelSelectController">
+   <children>
+      <Button fx:id="continueGame" layoutX="39.0" layoutY="61.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" text="Continue Last Saved Game" />
+      <Button fx:id="levelOne" layoutX="39.0" layoutY="111.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" text="Level 1" />
+      <Button fx:id="levelTwo" layoutX="39.0" layoutY="161.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" text="Level 2" />
+      <Button fx:id="levelThree" layoutX="39.0" layoutY="209.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" text="Level 3" />
+      <Button fx:id="mainMenuButton" layoutX="93.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleMainMenuButtonAction" prefHeight="25.0" prefWidth="104.0" text="Main Menu" />
+   </children>
+</AnchorPane>

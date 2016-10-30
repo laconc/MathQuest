@@ -45,4 +45,30 @@ public class MenuController extends Controller {
     private void handleOptionsButtonAction(ActionEvent event) {
         getMainApp().showOptions(getAccount());
     }
+    /**
+     * Takes the user to the Admin Tools screen.
+     *
+     */
+    @FXML
+    private void handleAdminButtonAction(ActionEvent event) {
+        getMainApp().showAdminTools(getAccount());
+    }
+    
+    /**
+     * Takes the user to the Level select screen.
+     *
+     */
+    @FXML
+    private void handlePlayGameButtonAction(ActionEvent event) {
+        getMainApp().showLevelSelect(getAccount());
+    }
+    
+    /**
+     * Takes the user to the Level select screen.
+     *
+     */
+    @FXML
+    private void handleStatsButtonAction(ActionEvent event) {
+        getMainApp().showStats(getAccount());
+    }
 }

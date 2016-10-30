@@ -67,12 +67,12 @@
     },
     "options": {
       "locked": false,
-      "difficulty": "EASY",
+      "difficulty": "NORMAL",
       "problemType": {
         "add": true,
         "div": false,
         "sub": false,
-        "mul": false
+        "mul": true
       }
     },
     "name": "Greg Luckenbach",

@@ -4,13 +4,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="561.0" prefWidth="397.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.65" fx:controller="team.mathquest.MenuController">
+<AnchorPane id="AnchorPane" prefHeight="354.0" prefWidth="515.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.mathquest.MenuController">
    <children>
-      <Label fx:id="nameLabel" layoutX="182.0" layoutY="51.0" />
-      <Button fx:id="playGameButton" layoutX="155.0" layoutY="128.0" mnemonicParsing="false" text="Play Game!" />
-      <Button fx:id="optionsButton" layoutX="166.0" layoutY="215.0" mnemonicParsing="false" onAction="#handleOptionsButtonAction" text="Options" />
-      <Button fx:id="statsButton" layoutX="161.0" layoutY="303.0" mnemonicParsing="false" text="Statistics" />
-      <Button fx:id="adminToolsButton" layoutX="152.0" layoutY="384.0" mnemonicParsing="false" text="Admin Tools" />
+      <Label fx:id="nameLabel" layoutX="68.0" layoutY="28.0" prefHeight="17.0" prefWidth="153.0" />
+      <Button fx:id="playGameButton" layoutX="68.0" layoutY="68.0" mnemonicParsing="false" onAction="#handlePlayGameButtonAction" prefHeight="81.0" prefWidth="160.0" text="Play Game!" />
+      <Button fx:id="optionsButton" layoutX="291.0" layoutY="68.0" mnemonicParsing="false" onAction="#handleOptionsButtonAction" prefHeight="81.0" prefWidth="160.0" text="Options" />
+      <Button fx:id="statsButton" layoutX="68.0" layoutY="212.0" mnemonicParsing="false" onAction="#handleStatsButtonAction" prefHeight="81.0" prefWidth="160.0" text="Statistics" />
+      <Button fx:id="adminToolsButton" layoutX="291.0" layoutY="212.0" mnemonicParsing="false" onAction="#handleAdminButtonAction" prefHeight="81.0" prefWidth="160.0" text="Admin Tools" />
    </children>
 </AnchorPane>

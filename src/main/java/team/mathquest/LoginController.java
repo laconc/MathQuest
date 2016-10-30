@@ -7,6 +7,7 @@ import team.mathquest.model.ReaderWriter;
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -23,7 +24,8 @@ public class LoginController extends Controller {
     private TextField usernameField;
     @FXML
     private PasswordField passField;
-
+    
+    private Alert alert;
     private ReaderWriter rw = new ReaderWriter();
     private ArrayList<Account> accounts = new ArrayList<>();
 
@@ -45,5 +47,22 @@ public class LoginController extends Controller {
         }
         // displays the error if the account info doesn't match
         errorLabel.setText("Incorrect!");
+    }
+    
+    /**
+     * Display a dialog box when a user clicks 'Forgot Password?'
+     *
+     */
+    @FXML
+    private void handleForgotPassButtonAction(ActionEvent event) {
+        displayForgotPaswordDialog();
+    }
+    
+    private void displayForgotPaswordDialog() {
+        alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Forgot Password?");
+        alert.setHeaderText(null);
+        alert.setContentText("Contact your local admininstrator so that they may reset your password.");
+        alert.showAndWait();
     }
 }

@@ -4,7 +4,6 @@ import team.mathquest.model.Account;
 import team.mathquest.model.Controller;
 import team.mathquest.model.DialogBoxController;
 
-import static javafx.application.Application.launch;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

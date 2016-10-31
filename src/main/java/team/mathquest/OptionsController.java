@@ -15,7 +15,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 
 /**
- *  Controller for the options screen.
+ *  Controller for the Options screen.
  *
  */
 public class OptionsController extends Controller {
@@ -38,6 +38,7 @@ public class OptionsController extends Controller {
     
     private Alert alert;
     private ReaderWriter rw = new ReaderWriter();
+    private boolean isOk = false;
     
     @Override
     public void start(Account account) {
@@ -109,32 +110,44 @@ public class OptionsController extends Controller {
                     .setDifficulty(Option.Difficulty.HARD);
         
         //the problem-types setting
-        if (addCheckbox.isSelected())
+        if (addCheckbox.isSelected()) {
             ((User) getAccount()).getOptions().setAdditionFlag(true);
+            isOk = true;
+        }
         else
             ((User) getAccount()).getOptions().setAdditionFlag(false);
         
-        if (subCheckbox.isSelected())
+        if (subCheckbox.isSelected()) {
             ((User) getAccount()).getOptions().setSubtractionFlag(true);
+            isOk = true;
+        }
         else
             ((User) getAccount()).getOptions().setSubtractionFlag(false);
             
-        if (mulCheckbox.isSelected())
+        if (mulCheckbox.isSelected()) {
             ((User) getAccount()).getOptions().setMultiplicationFlag(true);
+            isOk = true;
+        }
         else
             ((User) getAccount()).getOptions().setMultiplicationFlag(false);
             
-        if (divCheckbox.isSelected())
+        if (divCheckbox.isSelected()) {
             ((User) getAccount()).getOptions().setDivisionFlag(true);
+            isOk = true;
+        }
         else
             ((User) getAccount()).getOptions().setDivisionFlag(false);
         
-        // write to file
-        rw.updateUserList((User) getAccount());
-        displaySaveConfirmation();
-        
-        // sends the user back to the main menu
-        getMainApp().showMainMenu(getAccount());
+        if (isOk) { // checks that at least one problem type was selected
+            // write to file
+            rw.updateUserList((User) getAccount());
+            displaySaveConfirmation();
+
+            // sends the user back to the main menu
+            getMainApp().showMainMenu(getAccount());
+        }
+        else
+            displayProblemTypeError();
     }
     
     private void displaySaveConfirmation() {
@@ -142,6 +155,14 @@ public class OptionsController extends Controller {
         alert.setTitle("Save Confirmation");
         alert.setHeaderText(null);
         alert.setContentText("Your selections were saved!");
+        alert.showAndWait();
+    }
+    
+    private void displayProblemTypeError() {
+        alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText("At least one problem type needs to be selected.");
         alert.showAndWait();
     }
 }

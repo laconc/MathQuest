@@ -7,7 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 /**
- *  Controller for the level select screen.
+ *  Controller for the Level Select screen.
  *
  */
 public class LevelSelectController extends Controller {

@@ -7,7 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 /**
- * Controller for the statistics screen.
+ * Controller for the Statistics screen.
  *
  */
 public class StatsController extends Controller {

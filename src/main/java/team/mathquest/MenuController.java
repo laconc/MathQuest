@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 /**
- * Controller for the main menu screen.
+ * Controller for the Main Menu screen.
  *
  */
 public class MenuController extends Controller {

@@ -13,7 +13,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 /**
- * Controller for the login screen.
+ * Controller for the Login screen.
  *
  */
 public class LoginController extends Controller {

@@ -7,7 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 /**
- * Controller for the admin tools screen.
+ * Controller for the Admin Tools screen.
  *
  */
 public class AdminToolsController extends Controller {

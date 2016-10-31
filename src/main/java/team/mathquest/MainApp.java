@@ -2,6 +2,7 @@ package team.mathquest;
 
 import team.mathquest.model.Account;
 import team.mathquest.model.Controller;
+import team.mathquest.model.DialogBoxController;
 
 import static javafx.application.Application.launch;
 import java.io.IOException;
@@ -10,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import static javafx.application.Application.launch;
 
 public class MainApp extends Application {
 
@@ -89,7 +91,8 @@ public class MainApp extends Application {
     */
     public void showQuitGame(Account account) {
         String resource = "/fxml/QuitGame.fxml";
-        swapScene(resource, account);
+        String title = "Quit Game";
+        displayDialog(resource, account, title);
     }
     
     /**
@@ -130,6 +133,39 @@ public class MainApp extends Application {
 
         } catch (IOException e) {
             System.out.println("Error swapping the scene.");
+        }
+    }
+    
+    /**
+    * Opens a second screen and changes the active controller.
+    * 
+    * @param resource the FXML file to load
+    * @param account the account that was used to log in
+    * @param title the title of the dialog box
+    */
+    private void displayDialog(String resource, Account account, String title) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource(resource));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle(title);
+            dialogStage.initOwner(mainStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            
+            // gives the controller access to the main app & passes it a
+            // reference to itself
+            DialogBoxController controller = loader.getController();
+            controller.setMainApp(this);
+            controller.setDialogStage(dialogStage);
+            controller.start(account);
+
+            dialogStage.showAndWait();
+            
+        } catch (IOException e) {
+            System.out.println("Error displaying the dialog box.");
         }
     }
 

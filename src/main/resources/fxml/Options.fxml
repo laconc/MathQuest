@@ -23,7 +23,7 @@
       <CheckBox fx:id="mulCheckbox" layoutX="272.0" layoutY="159.0" mnemonicParsing="false" text="Multiplication" />
       <CheckBox fx:id="divCheckbox" layoutX="272.0" layoutY="187.0" mnemonicParsing="false" text="Division" />
       
-      <Button fx:id="mainMenuButton" layoutX="234.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleMainMenuButtonAction" text="Main Menu" />
-      <Button fx:id="okButton" layoutX="333.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleOkButtonAction" prefHeight="25.0" prefWidth="67.0" text="OK" />
+      <Button fx:id="cancelButton" layoutX="234.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleCancelButtonAction" text="Cancel" />
+      <Button fx:id="saveButton" layoutX="333.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleSaveButtonAction" prefHeight="25.0" prefWidth="67.0" text="Save" />
    </children>
 </AnchorPane>

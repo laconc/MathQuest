@@ -84,7 +84,7 @@ public class OptionsController extends Controller {
      *
      */
     @FXML
-    private void handleMainMenuButtonAction(ActionEvent event) {
+    private void handleCancelButtonAction(ActionEvent event) {
         getMainApp().showMainMenu(getAccount());
     }
     
@@ -93,7 +93,7 @@ public class OptionsController extends Controller {
      *
      */
     @FXML
-    private void handleOkButtonAction(ActionEvent event) {
+    private void handleSaveButtonAction(ActionEvent event) {
         
         // the difficulty setting
         if (difficultyGroup.getSelectedToggle() == easyButton)

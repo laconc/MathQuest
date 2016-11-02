@@ -1,11 +1,14 @@
 package team.mathquest.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class User extends Account {
     
     private LocalDate dateJoined;
     private Option options;
+    private List<Session> gameHistory = new ArrayList<>();
 
     /**
      * This constructor creates an account with the default password '1234'.
@@ -72,5 +75,19 @@ public class User extends Account {
     public String viewStats() {
         // TODO: Write the function
         return "Working on it";
+    }
+
+    /**
+     * @return this user's game history
+     */
+    public List<Session> getGameHistory() {
+        return gameHistory;
+    }
+
+    /**
+     * @param session the session to add to this user's history
+     */
+    public void addGameHistory(Session session) {
+        gameHistory.add(session);
     }
 }

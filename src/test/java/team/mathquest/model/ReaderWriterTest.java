@@ -1,6 +1,7 @@
 package team.mathquest.model;
 
 import java.util.ArrayList;
+import java.util.List;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import static org.junit.Assert.*;
@@ -11,7 +12,7 @@ import static org.junit.Assert.*;
  */
 public class ReaderWriterTest {
 
-    ArrayList<Account> accounts = new ArrayList<>();
+    List<Account> accounts = new ArrayList<>();
 
     public ReaderWriterTest() {
     }

@@ -9,10 +9,10 @@
       "locked": false,
       "difficulty": "EASY",
       "problemType": {
-        "add": true,
-        "div": false,
-        "sub": true,
-        "mul": false
+        "addition": true,
+        "division": true,
+        "subtraction": true,
+        "multiplication": true
       }
     },
     "name": "Dashiel Lopez Mendez",
@@ -29,10 +29,10 @@
       "locked": false,
       "difficulty": "EASY",
       "problemType": {
-        "add": true,
-        "div": false,
-        "sub": false,
-        "mul": false
+        "addition": true,
+        "division": false,
+        "subtraction": false,
+        "multiplication": false
       }
     },
     "name": "Athena Kao",
@@ -49,10 +49,10 @@
       "locked": false,
       "difficulty": "EASY",
       "problemType": {
-        "add": true,
-        "div": false,
-        "sub": false,
-        "mul": false
+        "addition": true,
+        "division": false,
+        "subtraction": false,
+        "multiplication": false
       }
     },
     "name": "Emily Malnor",
@@ -69,10 +69,10 @@
       "locked": false,
       "difficulty": "NORMAL",
       "problemType": {
-        "add": true,
-        "div": false,
-        "sub": false,
-        "mul": true
+        "addition": true,
+        "division": false,
+        "subtraction": false,
+        "multiplication": true
       }
     },
     "name": "Greg Luckenbach",

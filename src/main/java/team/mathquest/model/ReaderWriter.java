@@ -9,6 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Reads and writes the state to JSON files.
@@ -23,7 +24,7 @@ public class ReaderWriter {
     private FileWriter writer;
     private BufferedReader reader;
 
-    private ArrayList<Account> accounts;
+    private List<Account> accounts;
     private String json;
 
     /**
@@ -31,7 +32,7 @@ public class ReaderWriter {
     *
     * @return the users in the system
     */
-    public ArrayList<Account> readUserList() {
+    public List<Account> readUserList() {
         try {
             reader = new BufferedReader(new FileReader("Users.json"));
             accounts = gson.fromJson(reader, userType);
@@ -46,7 +47,7 @@ public class ReaderWriter {
     *
     * @param accounts the users to save
     */
-    public void writeUserList(ArrayList<Account> accounts) {
+    public void writeUserList(List<Account> accounts) {
         json = gson.toJson(accounts, userType);
         try {
             writer = new FileWriter("Users.json");
@@ -86,7 +87,7 @@ public class ReaderWriter {
     *
     * @return the admins in the system
     */
-    public ArrayList<Account> readAdminList() {
+    public List<Account> readAdminList() {
         try {
             reader = new BufferedReader(new FileReader("Admins.json"));
             accounts = gson.fromJson(reader, adminType);
@@ -101,7 +102,7 @@ public class ReaderWriter {
     *
     * @param accounts the admins to save
     */
-    public void writeAdminList(ArrayList<Account> accounts) {
+    public void writeAdminList(List<Account> accounts) {
         json = gson.toJson(accounts, adminType);
         try {
             writer = new FileWriter("Admins.json");

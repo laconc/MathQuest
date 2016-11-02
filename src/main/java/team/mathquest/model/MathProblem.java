@@ -1,8 +1,10 @@
 package team.mathquest.model;
 
-import java.util.ArrayList;
-import java.util.Random;
 import team.mathquest.model.Option.Difficulty;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class MathProblem {
     
@@ -13,14 +15,17 @@ public class MathProblem {
 	ADDITION, SUBTRACTION, MULTIPLICATION, DIVISION;
     }
     
-    Random random = new Random();
-    private ProblemType problemType;
+    private Random random = new Random();
+    private ProblemType type;
+    private Difficulty difficulty;
     private int answer;
-    int[] integers = new int[2];
-    private ArrayList<ProblemType> problemTypeChoices = new ArrayList<>();
+    private int[] questionValues = new int[2];
+    private List<ProblemType> problemTypeChoices = new ArrayList<>();
     
     MathProblem(Difficulty difficulty, boolean addFlag, boolean subFlag,
             boolean mulFlag, boolean divFlag) {
+        
+        this.difficulty = difficulty;
         
         if (addFlag)
             problemTypeChoices.add(ProblemType.ADDITION);
@@ -30,51 +35,48 @@ public class MathProblem {
             problemTypeChoices.add(ProblemType.MULTIPLICATION);
         if (divFlag)
             problemTypeChoices.add(ProblemType.DIVISION);
-        
-        generateMathProblem();
-            
     }
     
-    private void generateMathProblem() {
+    public void generateMathProblem() {
         // randomly selects a problem type
         problemTypeChoices.get(random.nextInt(problemTypeChoices.size()));
         
         // randomly selects 2 numbers based on the difficulty and
         // figures out the answer
-        switch (problemType) {
+        switch (type) {
             case ADDITION:
-                // TODO: fill integers array + base on difficulty
-                answer = integers[0] + integers[1];
+                // TODO: fill questionValues array + base on difficulty
+                answer = questionValues[0] + questionValues[1];
                 break;
             case SUBTRACTION:
-                // TODO: fill integers array + base on difficulty
-                answer = integers[0] - integers[1];
+                // TODO: fill questionValues array + base on difficulty
+                answer = questionValues[0] - questionValues[1];
                 break;
             case MULTIPLICATION:
-                // TODO: fill integers array + base on difficulty
-                answer = integers[0] * integers[1];
+                // TODO: fill questionValues array + base on difficulty
+                answer = questionValues[0] * questionValues[1];
                 break;
             case DIVISION:
-                // TODO: fill integers array + base on difficulty
+                // TODO: fill questionValues array + base on difficulty
                 
                 // ensures that the division problems generated don't
                 // have a remainder
-                if ((integers[0] % integers[1]) == 0)
-                    answer = integers[0] / integers[1];
+                if ((questionValues[0] % questionValues[1]) == 0)
+                    answer = questionValues[0] / questionValues[1];
                 else
                     generateMathProblem();
         }
     }
     
-    private ProblemType getProblemType() {
-        return problemType;
+    public ProblemType getProblemType() {
+        return type;
     }
     
-    private int[] getQuestion() {
-        return integers;
+    public int[] getQuestionValues() {
+        return questionValues;
     }
     
-    private int getAnswer() {
+    public int getAnswer() {
         return answer;
     }
 }

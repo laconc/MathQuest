@@ -17,6 +17,8 @@ public class MenuController extends Controller {
     @FXML
     private Label nameLabel;
     @FXML
+    private Button playGameButton;
+    @FXML
     private Button optionsButton;
     @FXML
     private Button adminToolsButton;
@@ -27,8 +29,10 @@ public class MenuController extends Controller {
         super.setAccount(account);
         nameLabel.setText(account.getName());
         
-        if (getAccount().getType() == 'a') // admin-specific code
+        if (getAccount().getType() == 'a') { // admin-specific code
+            playGameButton.setDisable(true);
             optionsButton.setDisable(true);
+        }
         
         else if (getAccount().getType() == 'u') // user-specific code
             adminToolsButton.setDisable(true);

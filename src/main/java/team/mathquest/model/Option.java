@@ -2,6 +2,7 @@ package team.mathquest.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import team.mathquest.model.MathProblem.ProblemType;
 
 public class Option {
     
@@ -29,10 +30,10 @@ public class Option {
      * 
      */
     private void defaultProblemType() {
-        problemType.put("add", true);
-        problemType.put("sub", false);
-        problemType.put("mul", false);
-        problemType.put("div", false);
+        problemType.put("addition", true);
+        problemType.put("subtraction", false);
+        problemType.put("multiplication", false);
+        problemType.put("division", false);
     }
 
     /**
@@ -65,62 +66,42 @@ public class Option {
     }
     
     /**
-     * @return the state of the addition flag
+     * @param type the type of question problem
+     * @return the state of the requested flag
      */
-    public boolean getAdditionFlag() {
-        return problemType.get("add");
+    public boolean getFlag(ProblemType type) {
+        switch (type) {
+                case ADDITION:
+                    return problemType.get("addition");
+                case SUBTRACTION:
+                    return problemType.get("subtraction");
+                case MULTIPLICATION:
+                    return problemType.get("multiplication");
+                case DIVISION:
+                    return problemType.get("division");
+                default:
+                    return false;
+            }
     }
     
     /**
-     * @return the state of the subtraction flag
-     */
-    public boolean getSubtractionFlag() {
-        return problemType.get("sub");
-    }
-    
-    /**
-     * @return the state of the multiplication flag
-     */
-    public boolean getMultiplicationFlag() {
-        return problemType.get("mul");
-    }
-    
-    /**
-     * @return the state of the division flag
-     */
-    public boolean getDivisionFlag() {
-        return problemType.get("div");
-    }
-    
-    /**
+     * @param type the type of question problem
      * @param flag whether to show addition problems or not
      */
-    public void setAdditionFlag(boolean flag) {
+    public void setFlag(ProblemType type, boolean flag) {
         if(!isLocked())
-            problemType.put("add", flag);
-    }
-    
-    /**
-     * @param flag whether to show subtraction problems or not
-     */
-    public void setSubtractionFlag(boolean flag) {
-        if(!isLocked())
-            problemType.put("sub", flag);
-    }
-    
-    /**
-     * @param flag whether to show multiplication problems or not
-     */
-    public void setMultiplicationFlag(boolean flag) {
-        if(!isLocked())
-            problemType.put("mul", flag);
-    }
-    
-    /**
-     * @param flag whether to show division problems or not
-     */
-    public void setDivisionFlag(boolean flag) {
-        if(!isLocked())
-            problemType.put("div", flag);
+            switch (type) {
+                case ADDITION:
+                    problemType.put("addition", flag);
+                    break;
+                case SUBTRACTION:
+                    problemType.put("subtraction", flag);
+                    break;
+                case MULTIPLICATION:
+                    problemType.put("multiplication", flag);
+                    break;
+                case DIVISION:
+                    problemType.put("division", flag);
+            }
     }
 }

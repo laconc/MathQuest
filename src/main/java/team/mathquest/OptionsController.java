@@ -2,7 +2,8 @@ package team.mathquest;
 
 import team.mathquest.model.Account;
 import team.mathquest.model.Controller;
-import team.mathquest.model.Option;
+import team.mathquest.model.MathProblem.ProblemType;
+import team.mathquest.model.Option.Difficulty;
 import team.mathquest.model.User;
 import team.mathquest.model.ReaderWriter;
 
@@ -70,13 +71,13 @@ public class OptionsController extends Controller {
         }
         
         // selects the currently-selected problem types
-        if (((User) getAccount()).getOptions().getAdditionFlag())
+        if (((User) getAccount()).getOptions().getFlag(ProblemType.ADDITION))
             addCheckbox.setSelected(true);
-        if (((User) getAccount()).getOptions().getSubtractionFlag())
+        if (((User) getAccount()).getOptions().getFlag(ProblemType.SUBTRACTION))
             subCheckbox.setSelected(true);
-        if (((User) getAccount()).getOptions().getMultiplicationFlag())
+        if (((User) getAccount()).getOptions().getFlag(ProblemType.MULTIPLICATION))
             mulCheckbox.setSelected(true);
-        if (((User) getAccount()).getOptions().getDivisionFlag())
+        if (((User) getAccount()).getOptions().getFlag(ProblemType.DIVISION))
             divCheckbox.setSelected(true);
     }
     
@@ -99,44 +100,52 @@ public class OptionsController extends Controller {
         // the difficulty setting
         if (difficultyGroup.getSelectedToggle() == easyButton)
             ((User) getAccount()).getOptions()
-                    .setDifficulty(Option.Difficulty.EASY);
+                    .setDifficulty(Difficulty.EASY);
         
         else if (difficultyGroup.getSelectedToggle() == normalButton)
             ((User) getAccount()).getOptions()
-                    .setDifficulty(Option.Difficulty.NORMAL);
+                    .setDifficulty(Difficulty.NORMAL);
         
         else if (difficultyGroup.getSelectedToggle() == hardButton)
             ((User) getAccount()).getOptions()
-                    .setDifficulty(Option.Difficulty.HARD);
+                    .setDifficulty(Difficulty.HARD);
         
         //the problem-types setting
         if (addCheckbox.isSelected()) {
-            ((User) getAccount()).getOptions().setAdditionFlag(true);
+            ((User) getAccount()).getOptions()
+                    .setFlag(ProblemType.ADDITION, true);
             isOk = true;
         }
         else
-            ((User) getAccount()).getOptions().setAdditionFlag(false);
+            ((User) getAccount()).getOptions()
+                    .setFlag(ProblemType.ADDITION, false);
         
         if (subCheckbox.isSelected()) {
-            ((User) getAccount()).getOptions().setSubtractionFlag(true);
+            ((User) getAccount()).getOptions()
+                    .setFlag(ProblemType.SUBTRACTION, true);
             isOk = true;
         }
         else
-            ((User) getAccount()).getOptions().setSubtractionFlag(false);
+            ((User) getAccount()).getOptions()
+                    .setFlag(ProblemType.SUBTRACTION, false);
             
         if (mulCheckbox.isSelected()) {
-            ((User) getAccount()).getOptions().setMultiplicationFlag(true);
+            ((User) getAccount()).getOptions()
+                    .setFlag(ProblemType.MULTIPLICATION, true);
             isOk = true;
         }
         else
-            ((User) getAccount()).getOptions().setMultiplicationFlag(false);
+            ((User) getAccount()).getOptions()
+                    .setFlag(ProblemType.MULTIPLICATION, false);
             
         if (divCheckbox.isSelected()) {
-            ((User) getAccount()).getOptions().setDivisionFlag(true);
+            ((User) getAccount()).getOptions()
+                    .setFlag(ProblemType.DIVISION, true);
             isOk = true;
         }
         else
-            ((User) getAccount()).getOptions().setDivisionFlag(false);
+            ((User) getAccount()).getOptions()
+                    .setFlag(ProblemType.DIVISION, false);
         
         if (isOk) { // checks that at least one problem type was selected
             // write to file
@@ -158,6 +167,10 @@ public class OptionsController extends Controller {
         alert.showAndWait();
     }
     
+    /**
+     * Displays if at least one problem type wasn't selected.
+     *
+     */
     private void displayProblemTypeError() {
         alert = new Alert(AlertType.ERROR);
         alert.setTitle("Error");

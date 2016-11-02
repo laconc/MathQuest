@@ -1,5 +1,7 @@
 package team.mathquest;
 
+import java.util.Arrays;
+import java.util.List;
 import team.mathquest.model.Account;
 import team.mathquest.model.Controller;
 import team.mathquest.model.MathProblem.ProblemType;
@@ -11,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
@@ -23,62 +26,53 @@ public class OptionsController extends Controller {
     @FXML
     private ToggleGroup difficultyGroup;
     @FXML
-    private RadioButton easyButton;
+    private Button saveButton;
     @FXML
-    private RadioButton normalButton;
+    private List<RadioButton> buttonList;
     @FXML
-    private RadioButton hardButton;
-    @FXML
-    private CheckBox addCheckbox;
-    @FXML
-    private CheckBox subCheckbox;
-    @FXML
-    private CheckBox mulCheckbox;
-    @FXML
-    private CheckBox divCheckbox;
+    private List<CheckBox> checkboxList;
     
     private Alert alert;
     private ReaderWriter rw = new ReaderWriter();
     private boolean isOk = false;
+    private List<ProblemType> typeList;
+    private List<Difficulty> difficultyList;
     
     @Override
     public void start(Account account) {
         super.start(account);
         
-        // If the isLocked flag is enabled, grays out the radio buttons
-        // and the checkboxes
+        typeList = Arrays.asList(ProblemType.ADDITION,
+                                 ProblemType.SUBTRACTION,
+                                 ProblemType.MULTIPLICATION,
+                                 ProblemType.DIVISION);
+        
+        difficultyList = Arrays.asList(Difficulty.EASY,
+                                       Difficulty.NORMAL,
+                                       Difficulty.HARD);
+        
+        // If the isLocked flag is enabled: grays out the radio buttons
+        // and the checkboxes, and disables the Save button
         if (((User) getAccount()).getOptions().isLocked()) {
-            easyButton.setDisable(true);
-            normalButton.setDisable(true);
-            hardButton.setDisable(true);
+            for (int i = 0; i < 3; i++)
+                buttonList.get(i).setDisable(true);
             
-            addCheckbox.setDisable(true);
-            subCheckbox.setDisable(true);
-            mulCheckbox.setDisable(true);
-            divCheckbox.setDisable(true);
+            for (int i = 0; i < 4; i++)
+                checkboxList.get(i).setDisable(true);
+            
+            saveButton.setDisable(true);
         }
         
-        // selects the currently-selected difficulty
-        switch (((User) getAccount()).getOptions().getDifficulty()) {
-            case EASY:
-                easyButton.setSelected(true);
-                break;
-            case NORMAL:
-                normalButton.setSelected(true);
-                break;
-            case HARD:
-                hardButton.setSelected(true);
-        }
+        // updates the UI with the currently-selected difficulty
+        for (int i = 0; i < 3; i++)
+            if (((User) getAccount()).getOptions().getDifficulty()
+                    == difficultyList.get(i))
+                buttonList.get(i).setSelected(true);
         
-        // selects the currently-selected problem types
-        if (((User) getAccount()).getOptions().getFlag(ProblemType.ADDITION))
-            addCheckbox.setSelected(true);
-        if (((User) getAccount()).getOptions().getFlag(ProblemType.SUBTRACTION))
-            subCheckbox.setSelected(true);
-        if (((User) getAccount()).getOptions().getFlag(ProblemType.MULTIPLICATION))
-            mulCheckbox.setSelected(true);
-        if (((User) getAccount()).getOptions().getFlag(ProblemType.DIVISION))
-            divCheckbox.setSelected(true);
+        // updates the UI with the currently-selected problem types
+        for (int i = 0; i < 4; i++)
+                if (((User) getAccount()).getOptions().getFlag(typeList.get(i)))
+                    checkboxList.get(i).setSelected(true);
     }
     
     /**
@@ -98,54 +92,22 @@ public class OptionsController extends Controller {
     private void handleSaveButtonAction(ActionEvent event) {
         
         // the difficulty setting
-        if (difficultyGroup.getSelectedToggle() == easyButton)
-            ((User) getAccount()).getOptions()
-                    .setDifficulty(Difficulty.EASY);
-        
-        else if (difficultyGroup.getSelectedToggle() == normalButton)
-            ((User) getAccount()).getOptions()
-                    .setDifficulty(Difficulty.NORMAL);
-        
-        else if (difficultyGroup.getSelectedToggle() == hardButton)
-            ((User) getAccount()).getOptions()
-                    .setDifficulty(Difficulty.HARD);
+        for (int i = 0; i < 3; i++)
+            if (difficultyGroup.getSelectedToggle() == buttonList.get(i))
+                ((User) getAccount()).getOptions()
+                    .setDifficulty(difficultyList.get(i));
         
         //the problem-types setting
-        if (addCheckbox.isSelected()) {
-            ((User) getAccount()).getOptions()
-                    .setFlag(ProblemType.ADDITION, true);
-            isOk = true;
+        for (int i = 0; i < 4; i++) {
+            if (checkboxList.get(i).isSelected()) {
+                ((User) getAccount()).getOptions()
+                    .setFlag(typeList.get(i), true);
+                isOk = true;
+            }
+            else
+                ((User) getAccount()).getOptions()
+                    .setFlag(typeList.get(i), false);
         }
-        else
-            ((User) getAccount()).getOptions()
-                    .setFlag(ProblemType.ADDITION, false);
-        
-        if (subCheckbox.isSelected()) {
-            ((User) getAccount()).getOptions()
-                    .setFlag(ProblemType.SUBTRACTION, true);
-            isOk = true;
-        }
-        else
-            ((User) getAccount()).getOptions()
-                    .setFlag(ProblemType.SUBTRACTION, false);
-            
-        if (mulCheckbox.isSelected()) {
-            ((User) getAccount()).getOptions()
-                    .setFlag(ProblemType.MULTIPLICATION, true);
-            isOk = true;
-        }
-        else
-            ((User) getAccount()).getOptions()
-                    .setFlag(ProblemType.MULTIPLICATION, false);
-            
-        if (divCheckbox.isSelected()) {
-            ((User) getAccount()).getOptions()
-                    .setFlag(ProblemType.DIVISION, true);
-            isOk = true;
-        }
-        else
-            ((User) getAccount()).getOptions()
-                    .setFlag(ProblemType.DIVISION, false);
         
         if (isOk) { // checks that at least one problem type was selected
             // write to file

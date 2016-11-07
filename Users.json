@@ -67,11 +67,11 @@
     },
     "options": {
       "locked": false,
-      "difficulty": "NORMAL",
+      "difficulty": "HARD",
       "problemType": {
         "addition": true,
         "division": false,
-        "subtraction": false,
+        "subtraction": true,
         "multiplication": true
       }
     },

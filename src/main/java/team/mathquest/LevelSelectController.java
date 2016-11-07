@@ -17,7 +17,14 @@ public class LevelSelectController extends Controller {
     public void start(Account account) {
         super.start(account);
     }
-    
+    /**
+     * Returns the user to the main menu.
+     *
+     */
+    @FXML
+    private void handleLevelOneButtonAction(ActionEvent event) {
+        getMainApp().showGame(getAccount());
+    }
     /**
      * Returns the user to the main menu.
      *

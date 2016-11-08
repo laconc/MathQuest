@@ -9,45 +9,44 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="team.mathquest.GameController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.mathquest.GameController">
    <children>
-      <Label fx:id="EnemyHealth" layoutX="41.0" layoutY="332.0" prefHeight="17.0" prefWidth="141.0" text="Enemy HP:" />
-      <Label fx:id="PlayerHealth" layoutX="425.0" layoutY="324.0" prefHeight="17.0" prefWidth="141.0" text="Player HP:" />
-      <ImageView fx:id="EnemyImage" fitHeight="216.0" fitWidth="204.0" layoutX="29.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+      <Label layoutX="41.0" layoutY="332.0" prefHeight="17.0" prefWidth="141.0" text="Enemy HP: " />
+      <Label layoutX="425.0" layoutY="324.0" prefHeight="17.0" prefWidth="141.0" text="Player HP: " />
+      <ImageView fx:id="enemyImage" fitHeight="216.0" fitWidth="204.0" layoutX="29.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/EnemyImage.PNG" />
+            <Image url="@../images/EnemyImage.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="PlayerImage" fitHeight="216.0" fitWidth="164.0" layoutX="424.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="playerImage" fitHeight="216.0" fitWidth="164.0" layoutX="424.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/PlayerImage.PNG" />
+            <Image url="@../images/PlayerImage.png" />
          </image>
       </ImageView>
-      <Button fx:id="QuitButton" layoutX="534.0" layoutY="14.0" onAction="#handleQuitButtonAction" mnemonicParsing="false" text="Quit" />
-      <Label fx:id="GameLabel" layoutX="15.0" layoutY="18.0" prefHeight="17.0" prefWidth="112.0" text="MathQuest" />
-      <Label fx:id="NumberOne" alignment="CENTER_RIGHT" layoutX="242.0" layoutY="59.0" prefHeight="88.0" prefWidth="120.0" text="22" textAlignment="RIGHT">
+      <Button fx:id="quitButton" layoutX="534.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleQuitButtonAction" text="Quit" />
+      <Label fx:id="topValueLabel" alignment="CENTER_RIGHT" layoutX="218.0" layoutY="63.0" prefHeight="101.0" prefWidth="155.0" textAlignment="RIGHT">
          <font>
             <Font size="83.0" />
          </font>
       </Label>
-      <Label fx:id="NumberTwo" alignment="CENTER_RIGHT" layoutX="250.0" layoutY="165.0" prefHeight="122.0" prefWidth="112.0" text="12" textAlignment="RIGHT">
+      <Label fx:id="bottomValueLabel" alignment="CENTER_RIGHT" layoutX="261.0" layoutY="169.0" prefHeight="122.0" prefWidth="112.0" textAlignment="RIGHT">
          <font>
             <Font size="83.0" />
          </font>
       </Label>
-      <Line fx:id="EqBar" endX="100.0" layoutX="300.0" layoutY="287.0" startX="-100.0" />
-      <Label fx:id="OperatorSymbol" layoutX="200.0" layoutY="165.0" prefHeight="59.0" prefWidth="57.0" text="x">
+      <Line endX="100.0" layoutX="300.0" layoutY="287.0" startX="-100.0" />
+      <Label fx:id="operatorLabel" layoutX="211.0" layoutY="179.0" prefHeight="59.0" prefWidth="57.0">
          <font>
             <Font size="83.0" />
          </font>
       </Label>
-      <TextField fx:id="InputAnswer" layoutX="213.0" layoutY="302.0" prefHeight="78.0" prefWidth="175.0" promptText="Answer">
+      <TextField fx:id="answerField" alignment="CENTER_RIGHT" layoutX="213.0" layoutY="302.0" prefHeight="78.0" prefWidth="175.0" promptText="Answer">
          <font>
             <Font size="36.0" />
          </font>
       </TextField>
-      <Label fx:id="EnemyCount" layoutX="57.0" layoutY="51.0" prefHeight="17.0" prefWidth="106.0" text="Enemy 1 of 4" />
-      <Label fx:id="StageCount" layoutX="438.0" layoutY="51.0" prefHeight="17.0" prefWidth="112.0" text="Stage 1" />
+      <Label fx:id="enemyNumberLabel" layoutX="57.0" layoutY="51.0" prefHeight="17.0" prefWidth="106.0" text="Enemy 1 of 4" />
+      <Label fx:id="stageNumberLabel" layoutX="438.0" layoutY="51.0" prefHeight="17.0" prefWidth="112.0" text="Stage 1" />
+      <Label fx:id="timerLabel" layoutX="268.0" layoutY="28.0" text="Time: " />
    </children>
 </AnchorPane>

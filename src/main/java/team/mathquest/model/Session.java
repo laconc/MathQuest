@@ -13,7 +13,7 @@ public class Session {
     private int[] problemsMissed;
     private double totalTime;
     
-    Session() {
+    public Session() {
         gamesCompleted = 0;
         stagesCompleted = 0;
         problemsSolved = new int[4];
@@ -100,7 +100,7 @@ public class Session {
     /**
      * @param type the type of question problem
      */
-    public void incrementProblemSolved(ProblemType type) {
+    public void incrementProblemsSolved(ProblemType type) {
         
         switch (type) {
             case ADDITION:
@@ -119,7 +119,7 @@ public class Session {
 
     /**
      * @param type the type of question problem
-     * @return the number of problems solved of that type
+     * @return the number of problems missed of that type
      */
     public int getProblemsMissed(ProblemType type) {
         

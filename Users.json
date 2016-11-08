@@ -7,7 +7,7 @@
     },
     "options": {
       "locked": false,
-      "difficulty": "EASY",
+      "difficulty": "HARD",
       "problemType": {
         "addition": true,
         "division": true,

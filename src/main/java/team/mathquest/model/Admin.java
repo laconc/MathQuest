@@ -1,7 +1,7 @@
 package team.mathquest.model;
 
 public class Admin extends Account {
-    // TODO: create the rest of the objects
+    // TODO create the rest of the objects
     
     /**
      * This constructor creates an account with the default password '1234'.
@@ -34,7 +34,7 @@ public class Admin extends Account {
      */
     @Override
     public String viewStats() {
-        // TODO: Write the function
+        // TODO write the function
         return "Working on it";
     }
 }

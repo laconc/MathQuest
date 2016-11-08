@@ -19,7 +19,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         mainStage = stage;
-        mainStage.setTitle("MathQuest");
+        getMainStage().setTitle("MathQuest");
         
         showLogin();
     }
@@ -117,12 +117,11 @@ public class MainApp extends Application {
             loader.setLocation(MainApp.class.getResource(resource));
             AnchorPane page = (AnchorPane) loader.load();
             Scene scene = new Scene(page);
-            // scene.getStylesheets().add("/styles/Styles.css");
 
             // swaps to the new scene
-            mainStage.close(); // closing it first to force it to re-center
-            mainStage.setScene(scene);
-            mainStage.show();
+            getMainStage().close(); // closing it first to force it to re-center
+            getMainStage().setScene(scene);
+            getMainStage().show();
 
             // gives the controller access to the main app & passes the
             // account info
@@ -150,7 +149,7 @@ public class MainApp extends Application {
 
             Stage dialogStage = new Stage();
             dialogStage.setTitle(title);
-            dialogStage.initOwner(mainStage);
+            dialogStage.initOwner(getMainStage());
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
             
@@ -178,5 +177,12 @@ public class MainApp extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+
+    /**
+     * @return the main stage
+     */
+    public Stage getMainStage() {
+        return mainStage;
     }
 }

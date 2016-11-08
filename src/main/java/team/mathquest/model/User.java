@@ -73,7 +73,7 @@ public class User extends Account {
      */
     @Override
     public String viewStats() {
-        // TODO: Write the function
+        // TODO write the function
         return "Working on it";
     }
 
@@ -87,7 +87,7 @@ public class User extends Account {
     /**
      * @param session the session to add to this user's history
      */
-    public void addGameHistory(Session session) {
+    public void addHistorySession(Session session) {
         gameHistory.add(session);
     }
 }

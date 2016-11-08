@@ -58,14 +58,14 @@ public class LoginController extends Controller {
      */
     @FXML
     private void handleForgotPassButtonAction(ActionEvent event) {
-        displayForgotPaswordDialog();
+        displayForgotPasswordDialog();
     }
     
-    private void displayForgotPaswordDialog() {
+    private void displayForgotPasswordDialog() {
         alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Forgot Password?");
         alert.setHeaderText(null);
-        alert.setContentText("Contact your local admininstrator so that "
+        alert.setContentText("Contact your local administrator so that "
                 + "they may reset your password.");
         alert.showAndWait();
     }

@@ -19,10 +19,11 @@ public class MathProblem {
     private ProblemType type;
     private Difficulty difficulty;
     private int answer;
-    private int[] questionValues = new int[2];
+    private int topValue;
+    private int bottomValue;
     private List<ProblemType> problemTypeChoices = new ArrayList<>();
     
-    MathProblem(Difficulty difficulty, boolean addFlag, boolean subFlag,
+    public MathProblem(Difficulty difficulty, boolean addFlag, boolean subFlag,
             boolean mulFlag, boolean divFlag) {
         
         this.difficulty = difficulty;
@@ -37,34 +38,79 @@ public class MathProblem {
             problemTypeChoices.add(ProblemType.DIVISION);
     }
     
-    public void generateMathProblem() {
+    public void newProblem() {
         // randomly selects a problem type
-        problemTypeChoices.get(random.nextInt(problemTypeChoices.size()));
+        type = problemTypeChoices.get(random.nextInt(problemTypeChoices.size()));
         
         // randomly selects 2 numbers based on the difficulty and
         // figures out the answer
         switch (type) {
             case ADDITION:
-                // TODO: fill questionValues array + base on difficulty
-                answer = questionValues[0] + questionValues[1];
+                switch (difficulty) {
+                    case EASY:
+                        topValue = random.nextInt(10) + 1;
+                        bottomValue = random.nextInt(10) + 1;
+                        break;
+                    case NORMAL:
+                        topValue = random.nextInt(50) + 1;
+                        bottomValue = random.nextInt(50) + 1;
+                        break;
+                    case HARD:
+                        topValue = random.nextInt(100) + 1;
+                        bottomValue = random.nextInt(100) + 1;
+                }
+                answer = topValue + bottomValue;
                 break;
-            case SUBTRACTION:
-                // TODO: fill questionValues array + base on difficulty
-                answer = questionValues[0] - questionValues[1];
-                break;
-            case MULTIPLICATION:
-                // TODO: fill questionValues array + base on difficulty
-                answer = questionValues[0] * questionValues[1];
-                break;
-            case DIVISION:
-                // TODO: fill questionValues array + base on difficulty
                 
-                // ensures that the division problems generated don't
-                // have a remainder
-                if ((questionValues[0] % questionValues[1]) == 0)
-                    answer = questionValues[0] / questionValues[1];
-                else
-                    generateMathProblem();
+            case SUBTRACTION:
+                switch (difficulty) {
+                    case EASY:
+                        answer = random.nextInt(10) + 1;
+                        bottomValue = random.nextInt(10) + 1;
+                        break;
+                    case NORMAL:
+                        answer = random.nextInt(50) + 1;
+                        bottomValue = random.nextInt(50) + 1;
+                        break;
+                    case HARD:
+                        answer = random.nextInt(100) + 1;
+                        bottomValue = random.nextInt(100) + 1;
+                }
+                topValue = bottomValue + answer;
+                break;
+                
+            case MULTIPLICATION:
+                switch (difficulty) {
+                    case EASY:
+                        topValue = random.nextInt(4) + 1;
+                        bottomValue = random.nextInt(4) + 1;
+                        break;
+                    case NORMAL:
+                        topValue = random.nextInt(9) + 1;
+                        bottomValue = random.nextInt(9) + 1;
+                        break;
+                    case HARD:
+                        topValue = random.nextInt(12) + 1;
+                        bottomValue = random.nextInt(12) + 1;
+                }
+                answer = topValue * bottomValue;
+                break;
+                
+            case DIVISION:
+                switch (difficulty) {
+                    case EASY:
+                        answer = random.nextInt(4) + 1;
+                        bottomValue = random.nextInt(4) + 1;
+                        break;
+                    case NORMAL:
+                        answer = random.nextInt(9) + 1;
+                        bottomValue = random.nextInt(9) + 1;
+                        break;
+                    case HARD:
+                        answer = random.nextInt(12) + 1;
+                        bottomValue = random.nextInt(12) + 1;
+                }
+                topValue = bottomValue * answer;
         }
     }
     
@@ -72,8 +118,12 @@ public class MathProblem {
         return type;
     }
     
-    public int[] getQuestionValues() {
-        return questionValues;
+    public int getTopValue() {
+        return topValue;
+    }
+    
+    public int getBottomValue() {
+        return bottomValue;
     }
     
     public int getAnswer() {

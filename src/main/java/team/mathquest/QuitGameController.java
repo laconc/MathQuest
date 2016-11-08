@@ -1,6 +1,7 @@
 package team.mathquest;
 
 import team.mathquest.model.DialogBoxController;
+import team.mathquest.model.User;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +19,7 @@ public class QuitGameController extends DialogBoxController {
      */
     @FXML
     private void handleSaveButtonAction(ActionEvent event) {
-        // TODO: Save code
+        // ((User) getAccount()).addHistorySession(session);
         
         getMainApp().showMainMenu(getAccount());
     }

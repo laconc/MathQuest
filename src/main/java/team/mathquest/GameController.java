@@ -2,6 +2,7 @@ package team.mathquest;
 
 import team.mathquest.model.Account;
 import team.mathquest.model.Controller;
+import team.mathquest.model.Level;
 import team.mathquest.model.MathProblem;
 import team.mathquest.model.MathProblem.ProblemType;
 import team.mathquest.model.Session;
@@ -12,9 +13,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * Controller for the Game screen.
@@ -22,6 +25,8 @@ import javafx.scene.input.KeyEvent;
  */
 public class GameController extends Controller {
     
+    @FXML
+    private AnchorPane mainAnchorPane;
     @FXML
     private Label topValueLabel;
     @FXML
@@ -41,6 +46,7 @@ public class GameController extends Controller {
     @FXML
     private ImageView enemyImage;
     
+    private Level level = new Level(0);
     private MathProblem problem;
     private Session session = new Session();
     private boolean isPaused = true;
@@ -48,7 +54,7 @@ public class GameController extends Controller {
     @Override
     public void start(Account account) {
         super.start(account);
-        addKeyboardListeners();
+        addKeyboardListener();
         session.setSessionStartTime(LocalDateTime.now());
         
         problem = new MathProblem(((User) getAccount()).getOptions().getDifficulty(),
@@ -57,6 +63,8 @@ public class GameController extends Controller {
                 ((User) getAccount()).getOptions().getFlag(ProblemType.MULTIPLICATION),
                 ((User) getAccount()).getOptions().getFlag(ProblemType.DIVISION));
         
+        playerImage.setImage(level.getPlayer().getImage());
+        enemyImage.setImage(level.getEnemy().getImage()); // temp
         pauseState();
     }
     
@@ -66,11 +74,12 @@ public class GameController extends Controller {
         bottomValueLabel.setText("");
         operatorLabel.setText("");
         answerField.setText("");
-        // TODO display instructions
+        displayInstructions();
     }
     
     private void runningState() {
         isPaused = false;
+        closeInstructions();
         problem.newProblem();
         
         topValueLabel.setText(Integer.toString(problem.getTopValue()));
@@ -90,7 +99,18 @@ public class GameController extends Controller {
                 operatorLabel.setText("÷");
         }
         
-        // start timer
+        // TODO start timer
+        answerField.requestFocus();
+    }
+    
+    private void displayInstructions() {
+        mainAnchorPane.setEffect(new GaussianBlur());
+        // TODO display instructions in a modal
+    }
+    
+    private void closeInstructions() {
+       // TODO close the instructions modal
+       mainAnchorPane.setEffect(null);
     }
     
     /**
@@ -101,7 +121,6 @@ public class GameController extends Controller {
     private void validateAnswer() {
         session.incrementGamesCompleted();
         
-        // if executes if the user-provided answer is correct
         if (Integer.parseInt(answerField.getText()) == problem.getAnswer()) {
             session.incrementProblemsSolved(problem.getProblemType());
             // TODO reduce Enemy HP & flash correct image
@@ -113,7 +132,7 @@ public class GameController extends Controller {
         pauseState();
     }
     
-    private void addKeyboardListeners() {
+    private void addKeyboardListener() {
         getMainApp().getMainStage().addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
             if (key.getCode() == KeyCode.ENTER) {
                 if (isPaused)

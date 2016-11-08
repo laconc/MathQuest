@@ -3,26 +3,17 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.mathquest.GameController">
+<AnchorPane id="AnchorPane" fx:id="mainAnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.mathquest.GameController">
    <children>
       <Label layoutX="41.0" layoutY="332.0" prefHeight="17.0" prefWidth="141.0" text="Enemy HP: " />
       <Label layoutX="425.0" layoutY="324.0" prefHeight="17.0" prefWidth="141.0" text="Player HP: " />
-      <ImageView fx:id="enemyImage" fitHeight="216.0" fitWidth="204.0" layoutX="29.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/EnemyImage.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="playerImage" fitHeight="216.0" fitWidth="164.0" layoutX="424.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/PlayerImage.png" />
-         </image>
-      </ImageView>
+      <ImageView fx:id="enemyImage" fitHeight="216.0" fitWidth="204.0" layoutX="29.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerImage" fitHeight="216.0" fitWidth="164.0" layoutX="424.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="quitButton" layoutX="534.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleQuitButtonAction" text="Quit" />
       <Label fx:id="topValueLabel" alignment="CENTER_RIGHT" layoutX="218.0" layoutY="63.0" prefHeight="101.0" prefWidth="155.0" textAlignment="RIGHT">
          <font>

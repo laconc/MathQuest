@@ -9,6 +9,7 @@ public class User extends Account {
     private LocalDate dateJoined;
     private Option options;
     private List<Session> gameHistory = new ArrayList<>();
+    private int level;
 
     /**
      * This constructor creates an account with the default password '1234'.
@@ -89,5 +90,19 @@ public class User extends Account {
      */
     public void addHistorySession(Session session) {
         gameHistory.add(session);
+    }
+
+    /**
+     * @return the player's current level
+     */
+    public int getLevel() {
+        return level;
+    }
+
+    /**
+     * @param level the level to set
+     */
+    public void setLevel(int level) {
+        this.level = level;
     }
 }

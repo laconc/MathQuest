@@ -6,14 +6,14 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="217.0" prefWidth="320" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.mathquest.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="202.0" prefWidth="320" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.mathquest.LoginController">
     <children>
-      <Label fx:id="errorLabel" layoutX="91.0" layoutY="189.0" minHeight="16" minWidth="69" textFill="#ff2505" />
-      <Label layoutX="47.0" layoutY="53.0" text="Name" />
-      <Label layoutX="47.0" layoutY="99.0" text="Password" />
-      <TextField fx:id="usernameField" layoutX="116.0" layoutY="48.0" prefHeight="27.0" prefWidth="178.0" />
-      <PasswordField fx:id="passField" layoutX="116.0" layoutY="94.0" prefHeight="27.0" prefWidth="178.0" />
-      <Button fx:id="loginButton" layoutX="103.0" layoutY="146.0" onAction="#handleLoginButtonAction" text="Login" />
-      <Button fx:id="forgotPassButton" layoutX="184.0" layoutY="146.0" mnemonicParsing="false" onAction="#handleForgotPassButtonAction" text="Forgot Password?" />
+      <Label fx:id="errorLabel" layoutX="84.0" layoutY="173.0" minHeight="16" minWidth="69" textFill="#ff2505" />
+      <Label layoutX="47.0" layoutY="43.0" text="Name" />
+      <Label layoutX="47.0" layoutY="89.0" text="Password" />
+      <TextField fx:id="usernameField" layoutX="116.0" layoutY="38.0" prefHeight="27.0" prefWidth="178.0" />
+      <PasswordField fx:id="passField" layoutX="116.0" layoutY="84.0" prefHeight="27.0" prefWidth="178.0" />
+      <Button fx:id="loginButton" layoutX="83.0" layoutY="135.0" onAction="#handleLoginButtonAction" text="Login" />
+      <Button fx:id="forgotPassButton" layoutX="164.0" layoutY="135.0" mnemonicParsing="false" onAction="#handleForgotPassButtonAction" text="Forgot Password?" />
     </children>
 </AnchorPane>

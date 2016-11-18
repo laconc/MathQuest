@@ -125,7 +125,7 @@ public class OptionsController extends Controller {
         alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Save Confirmation");
         alert.setHeaderText(null);
-        alert.setContentText("Your selections were saved!");
+        alert.setContentText("Your selections have been saved!");
         alert.showAndWait();
     }
     

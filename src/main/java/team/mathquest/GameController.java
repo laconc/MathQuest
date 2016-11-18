@@ -18,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import team.mathquest.model.Timer;
 
 /**
  * Controller for the Game screen.
@@ -26,7 +27,7 @@ import javafx.scene.layout.AnchorPane;
 public class GameController extends Controller {
     
     @FXML
-    private AnchorPane mainAnchorPane;
+    private AnchorPane subAnchorPane;
     @FXML
     private Label topValueLabel;
     @FXML
@@ -36,9 +37,15 @@ public class GameController extends Controller {
     @FXML
     private Label enemyNumberLabel;
     @FXML
+    private Label playerHpLabel;
+    @FXML
+    private Label enemyHpLabel;
+    @FXML
     private Label stageNumberLabel;
     @FXML
     private Label timerLabel;
+    @FXML
+    private Label instructionsLabel;
     @FXML
     private TextField answerField;
     @FXML
@@ -46,16 +53,16 @@ public class GameController extends Controller {
     @FXML
     private ImageView enemyImage;
     
-    private Level level = new Level(0);
+    private Level level;
     private MathProblem problem;
     private Session session = new Session();
+    private Timer timer = new Timer(getAccount());
     private boolean isPaused = true;
 
     @Override
     public void start(Account account) {
         super.start(account);
         addKeyboardListener();
-        session.setSessionStartTime(LocalDateTime.now());
         
         problem = new MathProblem(((User) getAccount()).getOptions().getDifficulty(),
                 ((User) getAccount()).getOptions().getFlag(ProblemType.ADDITION),
@@ -63,8 +70,13 @@ public class GameController extends Controller {
                 ((User) getAccount()).getOptions().getFlag(ProblemType.MULTIPLICATION),
                 ((User) getAccount()).getOptions().getFlag(ProblemType.DIVISION));
         
+        level = new Level(((User) getAccount()).getLevel());
         playerImage.setImage(level.getPlayer().getImage());
-        enemyImage.setImage(level.getEnemy().getImage()); // temp
+        enemyImage.setImage(level.getEnemy().getImage());
+        stageNumberLabel.setText("Stage " + 
+                Integer.toString(((User) getAccount()).getLevel()));
+        
+        session.setSessionStartTime(LocalDateTime.now());
         pauseState();
     }
     
@@ -99,18 +111,19 @@ public class GameController extends Controller {
                 operatorLabel.setText("÷");
         }
         
-        // TODO start timer
+        timerLabel.setText("Time: " + Double.toString(timer.getTime()));
         answerField.requestFocus();
+        // TODO start timer
     }
     
     private void displayInstructions() {
-        mainAnchorPane.setEffect(new GaussianBlur());
-        // TODO display instructions in a modal
+        subAnchorPane.setEffect(new GaussianBlur());
+        instructionsLabel.setVisible(true);
     }
     
     private void closeInstructions() {
-       // TODO close the instructions modal
-       mainAnchorPane.setEffect(null);
+       instructionsLabel.setVisible(false);
+       subAnchorPane.setEffect(null);
     }
     
     /**
@@ -119,17 +132,20 @@ public class GameController extends Controller {
      */
     @FXML
     private void validateAnswer() {
-        session.incrementGamesCompleted();
-        
-        if (Integer.parseInt(answerField.getText()) == problem.getAnswer()) {
-            session.incrementProblemsSolved(problem.getProblemType());
-            // TODO reduce Enemy HP & flash correct image
+        if (isValid()) {
+            session.incrementGamesCompleted();
+
+            if (Integer.parseInt(answerField.getText()) == problem.getAnswer()) {
+                session.incrementProblemsSolved(problem.getProblemType());
+                level.getEnemy().reduceHealth();
+                // TODO flash to notify of status
+            } else {
+                session.incrementProblemsMissed(problem.getProblemType());
+                level.getPlayer().reduceHealth();
+                // TODO flash to notify of status
+            }
+            pauseState();
         }
-        else {
-            session.incrementProblemsMissed(problem.getProblemType());
-            // TODO reduce Player HP & flash wrong image
-        }
-        pauseState();
     }
     
     private void addKeyboardListener() {
@@ -151,5 +167,16 @@ public class GameController extends Controller {
     private void handleQuitButtonAction(ActionEvent event) {
         getMainApp().showQuitGame(getAccount());
         // TODO pass session to: session.setSessionEndTime(LocalDateTime.now()) & save;
+    }
+
+    private boolean isValid() {
+        // will return true if the values are all integers and the length is
+        // greater than zero
+        try {
+            Integer.parseInt(answerField.getText());
+            return answerField.getText().length() > 0;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

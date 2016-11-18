@@ -8,36 +8,43 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="mainAnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.mathquest.GameController">
-   <children>
-      <Label layoutX="41.0" layoutY="332.0" prefHeight="17.0" prefWidth="141.0" text="Enemy HP: " />
-      <Label layoutX="425.0" layoutY="324.0" prefHeight="17.0" prefWidth="141.0" text="Player HP: " />
-      <ImageView fx:id="enemyImage" fitHeight="216.0" fitWidth="204.0" layoutX="29.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="playerImage" fitHeight="216.0" fitWidth="164.0" layoutX="424.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="quitButton" layoutX="534.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleQuitButtonAction" text="Quit" />
-      <Label fx:id="topValueLabel" alignment="CENTER_RIGHT" layoutX="218.0" layoutY="63.0" prefHeight="101.0" prefWidth="155.0" textAlignment="RIGHT">
-         <font>
-            <Font size="83.0" />
-         </font>
-      </Label>
-      <Label fx:id="bottomValueLabel" alignment="CENTER_RIGHT" layoutX="261.0" layoutY="169.0" prefHeight="122.0" prefWidth="112.0" textAlignment="RIGHT">
-         <font>
-            <Font size="83.0" />
-         </font>
-      </Label>
-      <Line endX="100.0" layoutX="300.0" layoutY="287.0" startX="-100.0" />
-      <Label fx:id="operatorLabel" layoutX="211.0" layoutY="179.0" prefHeight="59.0" prefWidth="57.0">
-         <font>
-            <Font size="83.0" />
-         </font>
-      </Label>
-      <TextField fx:id="answerField" alignment="CENTER_RIGHT" layoutX="213.0" layoutY="302.0" prefHeight="78.0" prefWidth="175.0" promptText="Answer">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </TextField>
-      <Label fx:id="enemyNumberLabel" layoutX="57.0" layoutY="51.0" prefHeight="17.0" prefWidth="106.0" text="Enemy 1 of 4" />
-      <Label fx:id="stageNumberLabel" layoutX="438.0" layoutY="51.0" prefHeight="17.0" prefWidth="112.0" text="Stage 1" />
-      <Label fx:id="timerLabel" layoutX="268.0" layoutY="28.0" text="Time: " />
-   </children>
+<AnchorPane id="AnchorPane" fx:id="mainAnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.mathquest.GameController">
+    <children>
+        <AnchorPane fx:id="subAnchorPane" layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="600.0">
+            <Label fx:id="enemyHpLabel" layoutX="41.0" layoutY="332.0" prefHeight="17.0" prefWidth="141.0" text="Enemy HP: " />
+            <Label fx:id="playerHpLabel" layoutX="425.0" layoutY="324.0" prefHeight="17.0" prefWidth="141.0" text="Player HP: " />
+            <ImageView fx:id="enemyImage" fitHeight="216.0" fitWidth="204.0" layoutX="29.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="playerImage" fitHeight="216.0" fitWidth="164.0" layoutX="424.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="quitButton" layoutX="534.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleQuitButtonAction" text="Quit" />
+            <Label fx:id="topValueLabel" alignment="CENTER_RIGHT" layoutX="218.0" layoutY="63.0" prefHeight="101.0" prefWidth="155.0" textAlignment="RIGHT">
+                <font>
+                    <Font size="83.0" />
+                </font>
+            </Label>
+            <Label fx:id="bottomValueLabel" alignment="CENTER_RIGHT" layoutX="261.0" layoutY="169.0" prefHeight="122.0" prefWidth="112.0" textAlignment="RIGHT">
+                <font>
+                    <Font size="83.0" />
+                </font>
+            </Label>
+            <Line endX="100.0" layoutX="300.0" layoutY="287.0" startX="-100.0" />
+            <Label fx:id="operatorLabel" layoutX="211.0" layoutY="179.0" prefHeight="59.0" prefWidth="57.0">
+                <font>
+                    <Font size="83.0" />
+                </font>
+            </Label>
+            <TextField fx:id="answerField" alignment="CENTER_RIGHT" layoutX="213.0" layoutY="302.0" prefHeight="78.0" prefWidth="175.0" promptText="Answer">
+                <font>
+                    <Font size="36.0" />
+                </font>
+            </TextField>
+            <Label fx:id="enemyNumberLabel" layoutX="57.0" layoutY="51.0" prefHeight="17.0" prefWidth="106.0" text="Enemy 1 of 4" />
+            <Label fx:id="stageNumberLabel" layoutX="438.0" layoutY="51.0" prefHeight="17.0" prefWidth="112.0" text="" />
+            <Label fx:id="timerLabel" layoutX="281.0" layoutY="30.0" text="Time: " />
+        </AnchorPane>
+        <Label fx:id="instructionsLabel" alignment="CENTER" layoutX="95.0" layoutY="140.0" prefHeight="78.0" prefWidth="423.0" style="-fx-border-color: green; -fx-background-color: #F4EDF4;" text="Press 'Enter' to begin" textAlignment="CENTER" textFill="#3cb57f">
+            <font>
+                <Font name="Avenir Next Bold" size="34.0" />
+            </font>
+        </Label>
+    </children>
 </AnchorPane>

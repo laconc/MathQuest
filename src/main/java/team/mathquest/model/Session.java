@@ -7,14 +7,12 @@ public class Session {
     
     private LocalDateTime sessionStartTime;
     private LocalDateTime sessionEndTime;
-    private int gamesCompleted;
     private int stagesCompleted;
     private int[] problemsSolved;
     private int[] problemsMissed;
     private double totalTime;
     
     public Session() {
-        gamesCompleted = 0;
         stagesCompleted = 0;
         problemsSolved = new int[4];
         problemsMissed = new int[4];
@@ -47,20 +45,6 @@ public class Session {
      */
     public void setSessionEndTime(LocalDateTime sessionEndTime) {
         this.sessionEndTime = sessionEndTime;
-    }
-
-    /**
-     * @return the number of games completed
-     */
-    public int getGamesCompleted() {
-        return gamesCompleted;
-    }
-
-    /**
-     * Adds 1 to the number of games completed.
-     */
-    public void incrementGamesCompleted() {
-        this.gamesCompleted += 1;
     }
 
     /**

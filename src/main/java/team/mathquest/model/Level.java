@@ -8,12 +8,14 @@ public class Level {
     
     private Player player;
     private Enemy enemy;
+    private int currentEnemy;
     private int level;
     
     public Level (int level) {
         this.level = level;
         player = new Player();
         enemy = new Enemy();
+        currentEnemy = 1;
     }
 
     /**
@@ -35,12 +37,20 @@ public class Level {
      */
     public void newEnemy() {
         enemy = new Enemy();
+        currentEnemy += 1;
+    }
+    
+    /**
+     * @return the current enemy's number out of the total in this level
+     */
+    public int getEnemyNumber() {
+        return currentEnemy;
     }
     
     /**
      * @return the total number of enemies on the current level
      */
-    public int getTotalEnemies() {
+    public int getEnemyPackSize() {
         return ((level * 2) + 1);
     }
     

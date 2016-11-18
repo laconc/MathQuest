@@ -13,11 +13,13 @@ public class Option {
 	EASY, NORMAL, HARD
     }
     
+    private String playerName;
     private boolean locked; // prevents the user from making changes
     private Difficulty difficulty;
     private Map<String, Boolean> problemType = new HashMap<>();
     
     Option() {
+        this.playerName = "Seamus"; // default name
         this.locked = false;
         this.difficulty = Difficulty.EASY;
         
@@ -103,5 +105,19 @@ public class Option {
                 case DIVISION:
                     problemType.put("division", flag);
             }
+    }
+
+    /**
+     * @return the player's name
+     */
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    /**
+     * @param playerName the player's name to set
+     */
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
     }
 }

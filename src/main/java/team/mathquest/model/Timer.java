@@ -7,20 +7,20 @@ public class Timer {
     public Timer (Account account) {
         switch(((User) account).getOptions().getDifficulty()) {
             case EASY:
-                time = 120;
+                time = 240;
                 break;
             case NORMAL:
-                time = 90;
+                time = 180;
                 break;
             case HARD:
-                time = 60;
+                time = 120;
         }
     }
     
     /**
      * @return the time allotted
      */
-    public double getTime() {
+    public double getTimeRemaining() {
         return time;
     }
 }

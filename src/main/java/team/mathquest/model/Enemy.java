@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 public class Enemy extends Entity {
     
     private enum Creature {
-        WOLF ("wolf", "images/WolfImage.png");
+        WOLF ("Wolf", "images/WolfImage.png");
         
         private String name;
         private String imageSource;
@@ -42,10 +42,5 @@ public class Enemy extends Entity {
         super.setName(strength.description + " " + creature.name);
         super.setHealth(strength.health);
         super.setImage(new Image(creature.imageSource));
-    }
-    
-    @Override
-    void killEntity() {
-        // TODO write method
     }
 }

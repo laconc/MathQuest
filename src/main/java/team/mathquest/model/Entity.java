@@ -7,6 +7,7 @@ public abstract class Entity {
     private String name;
     private int health;
     private Image image;
+    private boolean alive = true;
 
     /**
      * @return the entity's name
@@ -40,10 +41,15 @@ public abstract class Entity {
         health -= 1;
         
         if (health == 0)
-            killEntity();
+            alive = false;
     }
-    
-    abstract void killEntity();
+
+    /**
+     * @return the status of the entity
+     */
+    public Boolean isAlive() {
+        return alive;
+    }
 
     /**
      * @return the entity's image

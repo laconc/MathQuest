@@ -66,7 +66,7 @@ public class User extends Account {
      */
     @Override
     public char getType() {
-        return 'a';
+        return 'u';
     }
 
     /**

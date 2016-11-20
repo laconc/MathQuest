@@ -57,7 +57,7 @@ public class Level {
     /**
      * @return the current level
      */
-    public int getLevel() {
+    public int getLevelNumber() {
         return level;
     }
     

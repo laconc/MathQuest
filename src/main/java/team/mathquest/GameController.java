@@ -2,6 +2,7 @@ package team.mathquest;
 
 import team.mathquest.model.Account;
 import team.mathquest.model.Controller;
+import team.mathquest.model.GameTimer;
 import team.mathquest.model.Level;
 import team.mathquest.model.MathProblem;
 import team.mathquest.model.MathProblem.ProblemType;
@@ -9,9 +10,6 @@ import team.mathquest.model.Session;
 import team.mathquest.model.User;
 
 import java.time.LocalDateTime;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -22,7 +20,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import team.mathquest.model.Timer;
 
 /**
  * Controller for the Game screen.
@@ -65,7 +62,7 @@ public class GameController extends Controller {
     
     private EventHandler handler;
     private Level level;
-    private Timer timer;
+    private GameTimer timer;
     private MathProblem problem;
     private Session session = new Session();
     private boolean isPaused = true;
@@ -81,46 +78,74 @@ public class GameController extends Controller {
                 ((User) getAccount()).getOptions().getFlag(ProblemType.MULTIPLICATION),
                 ((User) getAccount()).getOptions().getFlag(ProblemType.DIVISION));
         
+        timer = new GameTimer(account);
+        timer.setEvent((EventHandler<ActionEvent>) (ActionEvent t) -> {
+            pausedState();
+            resetLevel();
+        });
+        timerLabel.textProperty().bind(getTimer().getTimeProperty().asString());
+        
         level = new Level(((User) getAccount()).getLevel());
-        timer = new Timer(account);
         playerImage.setImage(getLevel().getPlayer().getImage());
         enemyImage.setImage(getLevel().getEnemy().getImage());
         
-        levelNumberLabel.textProperty().bind(
-                new SimpleIntegerProperty(getLevel().getLevel()).asString());
-        playerNameLabel.setText(getLevel().getPlayer().getName());
-        playerHpLabel.textProperty().bind(
-                new SimpleIntegerProperty(getLevel().getPlayer().getHealth()).asString());
-        enemyHpLabel.textProperty().bind(
-                new SimpleIntegerProperty(getLevel().getEnemy().getHealth()).asString());
-        enemyNameLabel.textProperty().bind(
-                new SimpleStringProperty(getLevel().getEnemy().getName()));
-        enemyNumberLabel.textProperty().bind(
-                new SimpleIntegerProperty(getLevel().getEnemyNumber()).asString());
-        enemyTotalLabel.textProperty().bind(
-                new SimpleIntegerProperty(getLevel().getEnemyPackSize()).asString());
+        updateLabels();
+        
         session.setSessionStartTime(LocalDateTime.now());
-        pauseState();
+        pausedState();
     }
     
-    private void pauseState() {
+    private void updateLabels() {
+        levelNumberLabel.setText(Integer.toString(getLevel().getLevelNumber()));
+        playerNameLabel.setText(getLevel().getPlayer().getName());
+        playerHpLabel.setText(Integer.toString(getLevel().getPlayer().getHealth()));
+        enemyHpLabel.setText(Integer.toString(getLevel().getEnemy().getHealth()));
+        enemyNameLabel.setText(getLevel().getEnemy().getName());
+        enemyNumberLabel.setText(Integer.toString(getLevel().getEnemyNumber()));
+        enemyTotalLabel.setText(Integer.toString(getLevel().getEnemyPackSize()));
+    }
+    
+    private void pausedState() {
         isPaused = true;
         topValueLabel.setText("");
         bottomValueLabel.setText("");
         operatorLabel.setText("");
+        answerField.setText("");
+        // add time used to 'total time' for the session
         displayInstructions();
     }
     
     private void runningState() {
-        isPaused = false;
-        closeInstructions();
+        // the first time around
+        if (isPaused) {
+            isPaused = false;
+            closeInstructions();
+            getTimer().startTimer();
+        }
         
-        timerLabel.textProperty().bind(
-                new SimpleDoubleProperty(getTimer().getTimeRemaining()).asString());
+        newProblem();
         
-        // TODO start timer
-        // TODO while in timer loop, check isAlive for self and foe
-        displayProblem();
+        // enemy was defeated
+        if (!getLevel().getEnemy().isAlive()) {
+            // last enemy was defeated
+            if (getLevel().getEnemyNumber() == getLevel().getEnemyPackSize()) {
+                pausedState();
+                advanceLevel();
+            }
+            // more enemies remain
+            else {
+                // animation of enemy defeated
+                getLevel().newEnemy();
+            }
+        }
+        
+        // player was defeated
+        else if (!getLevel().getPlayer().isAlive()) {
+            pausedState();
+            resetLevel();
+        }
+        
+        updateLabels();
     }
     
     private void displayInstructions() {
@@ -133,7 +158,7 @@ public class GameController extends Controller {
        subAnchorPane.setEffect(null);
     }
     
-    private void displayProblem() {
+    private void newProblem() {
         problem.newProblem();
         
         topValueLabel.setText(Integer.toString(problem.getTopValue()));
@@ -163,49 +188,36 @@ public class GameController extends Controller {
     @FXML
     private void validateAnswer() {
         if (isValid()) {
+            // answer was correct
             if (Integer.parseInt(answerField.getText()) == problem.getAnswer()) {
                 session.incrementProblemsSolved(problem.getProblemType());
-                // answer was correct
                 getLevel().getEnemy().reduceHealth();
-                
-                if (!getLevel().getEnemy().isAlive()) { // enemy was defeated
-                    if (getLevel().getEnemyNumber() < getLevel().getEnemyPackSize()) {
-                        getLevel().newEnemy();
-                        displayProblem(); //TODO move this into the timer loop
-                    }
-                    else {
-                        advanceLevel();
-                        pauseState();
-                    }
-                }
                 // TODO flash to notify that answer was correct
-            } else {
-                // answer was wrong
+            }
+            // answer was wrong
+            else {
                 session.incrementProblemsMissed(problem.getProblemType());
                 getLevel().getPlayer().reduceHealth();
-                
-                if (!getLevel().getPlayer().isAlive()) { // player was defeated
-                    resetLevel();
-                    pauseState();
-                }
                 // TODO flash to notify that answer was wrong
             }
-            
-            answerField.setText("");
+            runningState();
         }
+        
+        answerField.setText("");
     }
     
     private void advanceLevel() {
+        getTimer().stopTimer();
         ((User) getAccount()).setLevel(((User) getAccount()).getLevel() + 1);
         level = new Level(((User) getAccount()).getLevel());
     }
     
     private void resetLevel() {
+        getTimer().stopTimer();
         level = new Level(((User) getAccount()).getLevel());
     }
     
     private void addKeyboardListener() {
-        
         handler = (EventHandler<KeyEvent>) (KeyEvent key) -> {
             if (key.getCode() == KeyCode.ENTER) {
                 if (isPaused)
@@ -216,6 +228,17 @@ public class GameController extends Controller {
         };
         
         getMainApp().getMainStage().addEventHandler(KeyEvent.KEY_PRESSED, handler);
+    }
+
+    private boolean isValid() {
+        // will return true if the values are all integers and the length is
+        // greater than zero
+        try {
+            Integer.parseInt(answerField.getText());
+            return answerField.getText().length() > 0;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
     
     /**
@@ -229,17 +252,6 @@ public class GameController extends Controller {
         // TODO pass session to: session.setSessionEndTime(LocalDateTime.now()) & save;
     }
 
-    private boolean isValid() {
-        // will return true if the values are all integers and the length is
-        // greater than zero
-        try {
-            Integer.parseInt(answerField.getText());
-            return answerField.getText().length() > 0;
-        } catch (NumberFormatException e) {
-            return false;
-}
-    }
-
     /**
      * @return the current level
      */
@@ -250,7 +262,7 @@ public class GameController extends Controller {
     /**
      * @return the timer
      */
-    public Timer getTimer() {
+    public GameTimer getTimer() {
         return timer;
     }
 }

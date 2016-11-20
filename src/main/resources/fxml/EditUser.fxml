@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.mathquest.EditUserController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.65" fx:controller="team.mathquest.EditUserController">
+   <children>
+      <Button fx:id="saveButton" layoutX="454.0" layoutY="327.0" mnemonicParsing="false" onAction="#handleSaveButtonAction" text="Save" />
+      <Button fx:id="cancelButton" layoutX="357.0" layoutY="327.0" mnemonicParsing="false" onAction="#handleCancelButtonAction" text="Cancel" />
+   </children>
 </AnchorPane>

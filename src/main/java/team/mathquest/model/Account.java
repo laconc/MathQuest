@@ -73,4 +73,9 @@ public abstract class Account {
     public void setPass(String pass) {
         this.pass = pass;
     }
+    
+    @Override
+    public String toString() {
+        return name;
+    }
 }

@@ -1,11 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import java.util.ArrayList?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.65" fx:controller="team.mathquest.EditUserController">
-   <children>
+   <fx:define>
+        <ArrayList fx:id="checkboxList" >
+            <CheckBox fx:id="addCheckbox" layoutX="272.0" layoutY="101.0" mnemonicParsing="false" text="Addition" />
+            <CheckBox fx:id="subCheckbox" layoutX="272.0" layoutY="129.0" mnemonicParsing="false" text="Subtraction" />
+            <CheckBox fx:id="mulCheckbox" layoutX="272.0" layoutY="159.0" mnemonicParsing="false" text="Multiplication" />
+            <CheckBox fx:id="divCheckbox" layoutX="272.0" layoutY="187.0" mnemonicParsing="false" text="Division" />
+        </ArrayList>
+        
+        <ArrayList fx:id="buttonList" >
+            <RadioButton fx:id="easyButton" layoutX="107.0" layoutY="110.0" mnemonicParsing="false" text="Easy">
+                <toggleGroup>
+                    <ToggleGroup fx:id="difficultyGroup" />
+                </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="normalButton" layoutX="106.0" layoutY="138.0" mnemonicParsing="false" text="Normal" toggleGroup="$difficultyGroup" />
+            <RadioButton fx:id="hardButton" layoutX="106.0" layoutY="168.0" mnemonicParsing="false" text="Hard" toggleGroup="$difficultyGroup" />
+        </ArrayList>
+    </fx:define>
+      
+    <children>
+        <Label layoutX="106.0" layoutY="75.0" text="Difficulty" />
+        <Label layoutX="272.0" layoutY="75.0" text="Problems" />
+      
+        <fx:reference source="easyButton" />
+        <fx:reference source="normalButton" />
+        <fx:reference source="hardButton" />
+      
+        <fx:reference source="addCheckbox" />
+        <fx:reference source="subCheckbox" />
+        <fx:reference source="mulCheckbox" />
+        <fx:reference source="divCheckbox" />
+      
       <Button fx:id="saveButton" layoutX="454.0" layoutY="327.0" mnemonicParsing="false" onAction="#handleSaveButtonAction" text="Save" />
       <Button fx:id="cancelButton" layoutX="357.0" layoutY="327.0" mnemonicParsing="false" onAction="#handleCancelButtonAction" text="Cancel" />
    </children>

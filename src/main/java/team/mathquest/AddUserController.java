@@ -1,6 +1,5 @@
 package team.mathquest;
 
-import team.mathquest.model.Account;
 import team.mathquest.model.Admin;
 import team.mathquest.model.DialogBoxController;
 import team.mathquest.model.ReaderWriter;

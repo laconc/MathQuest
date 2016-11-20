@@ -16,7 +16,7 @@
       <TextField fx:id="passField" layoutX="140.0" layoutY="169.0" />
       <Button fx:id="saveButton" layoutX="260.0" layoutY="256.0" mnemonicParsing="false" onAction="#handleSaveButtonAction" text="Save" />
       <CheckBox fx:id="isAdminCheckbox" layoutX="44.0" layoutY="217.0" mnemonicParsing="false" text="Administrator?" />
-      <Label fx:id="errorLabel" layoutX="44.0" layoutY="24.0" text="Error: All of the textboxes need to be filled." textFill="#eb0c0c" />
+      <Label fx:id="errorLabel" layoutX="44.0" layoutY="24.0" text="Error: All of the textboxes need to be filled." textFill="#eb0c0c" visible="false" />
       <Button fx:id="cancelButton" layoutX="165.0" layoutY="256.0" mnemonicParsing="false" onAction="#handleCancelButtonAction" text="Cancel" />
    </children>
 </AnchorPane>

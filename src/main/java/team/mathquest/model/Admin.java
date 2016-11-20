@@ -1,8 +1,6 @@
 package team.mathquest.model;
 
 public class Admin extends Account {
-    // TODO create the rest of the objects
-    
     /**
      * Creates an account with the default password '1234'.
      * Uses the constructor from Account.

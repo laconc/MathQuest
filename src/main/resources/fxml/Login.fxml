@@ -8,7 +8,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="202.0" prefWidth="320" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.mathquest.LoginController">
     <children>
-      <Label fx:id="errorLabel" layoutX="84.0" layoutY="173.0" minHeight="16" minWidth="69" textFill="#ff2505" />
+      <Label fx:id="errorLabel" layoutX="84.0" layoutY="173.0" minHeight="16" minWidth="69" text="Incorrect!" textFill="#ff2505" visible="false" />
       <Label layoutX="47.0" layoutY="43.0" text="Name" />
       <Label layoutX="47.0" layoutY="89.0" text="Password" />
       <TextField fx:id="usernameField" layoutX="116.0" layoutY="38.0" prefHeight="27.0" prefWidth="178.0" />

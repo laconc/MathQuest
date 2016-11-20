@@ -91,6 +91,13 @@ public class User extends Account {
     public void addHistorySession(Session session) {
         gameHistory.add(session);
     }
+    
+    /**
+     * @return this user's game history
+     */
+    public void resetGameHistory() {
+        gameHistory.clear();
+    }
 
     /**
      * @return the player's current level

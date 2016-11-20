@@ -9,12 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 
 /**
  * Controller for the Admin Tools screen.
  *
  */
 public class AdminToolsController extends Controller {
+    
+    @FXML
+    private ChoiceBox editUserChoiceBox;
     
     private ReaderWriter rw = new ReaderWriter();
     private List<Account> accounts = new ArrayList<>();
@@ -25,10 +29,9 @@ public class AdminToolsController extends Controller {
         
         // fills the choice box with the logged-in admin account and
         // all of the user accounts
-        // TODO fiter for users that they manage
         accounts.add(getAccount());
         accounts.addAll(rw.readUserList());
-        // TODO fill choice box
+        editUserChoiceBox.getItems().addAll(accounts);
     }
     
     /**
@@ -46,7 +49,8 @@ public class AdminToolsController extends Controller {
      */
     @FXML
     private void handleEditUserButtonAction(ActionEvent event) {
-        getMainApp().showEditUser(getAccount()); // TODO pass selected account
+        if (editUserChoiceBox.getValue() != null)
+            getMainApp().showEditUser(((Account) editUserChoiceBox.getValue()));
     }
     
     /**

@@ -59,7 +59,7 @@ public class LoginController extends Controller {
         }
         
         // displays the error if the account info doesn't match
-        errorLabel.setText("Incorrect!");
+        errorLabel.setVisible(true);
     }
     
     private void addKeyboardListener() {

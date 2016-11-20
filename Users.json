@@ -5,9 +5,8 @@
       "month": 10,
       "day": 29
     },
-    "level": 1,
-    "playerName": "Seamus",
     "options": {
+      "playerName": "Seamus",
       "locked": false,
       "difficulty": "EASY",
       "problemType": {
@@ -17,6 +16,8 @@
         "multiplication": true
       }
     },
+    "gameHistory": [],
+    "level": 1,
     "name": "Dashiel Lopez Mendez",
     "username": "dash",
     "pass": "1234"
@@ -27,9 +28,8 @@
       "month": 10,
       "day": 29
     },
-    "level": 1,
-    "playerName": "Seamus",
     "options": {
+      "playerName": "Seamus",
       "locked": false,
       "difficulty": "EASY",
       "problemType": {
@@ -39,6 +39,8 @@
         "multiplication": false
       }
     },
+    "gameHistory": [],
+    "level": 1,
     "name": "Athena Kao",
     "username": "athena",
     "pass": "1234"
@@ -49,9 +51,8 @@
       "month": 10,
       "day": 29
     },
-    "level": 1,
-    "playerName": "Seamus",
     "options": {
+      "playerName": "Seamus",
       "locked": false,
       "difficulty": "EASY",
       "problemType": {
@@ -61,6 +62,8 @@
         "multiplication": false
       }
     },
+    "gameHistory": [],
+    "level": 1,
     "name": "Emily Malnor",
     "username": "emily",
     "pass": "1234"
@@ -71,9 +74,8 @@
       "month": 10,
       "day": 29
     },
-    "level": 1,
-    "playerName": "Seamus",
     "options": {
+      "playerName": "Seamus",
       "locked": false,
       "difficulty": "HARD",
       "problemType": {
@@ -83,8 +85,33 @@
         "multiplication": true
       }
     },
+    "gameHistory": [],
+    "level": 1,
     "name": "Greg Luckenbach",
     "username": "greg",
+    "pass": "1234"
+  },
+  {
+    "dateJoined": {
+      "year": 2016,
+      "month": 11,
+      "day": 20
+    },
+    "options": {
+      "playerName": "Seamus",
+      "locked": false,
+      "difficulty": "EASY",
+      "problemType": {
+        "division": false,
+        "subtraction": false,
+        "multiplication": true,
+        "addition": true
+      }
+    },
+    "gameHistory": [],
+    "level": 0,
+    "name": "Bobby Tables",
+    "username": "bobby",
     "pass": "1234"
   }
 ]

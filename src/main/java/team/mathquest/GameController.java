@@ -227,7 +227,7 @@ public class GameController extends Controller {
             }
         };
         
-        getMainApp().getMainStage().addEventHandler(KeyEvent.KEY_PRESSED, handler);
+        getMainApp().getScene().addEventHandler(KeyEvent.KEY_PRESSED, handler);
     }
 
     private boolean isValid() {

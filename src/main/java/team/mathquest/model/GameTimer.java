@@ -10,28 +10,16 @@ import javafx.util.Duration;
 
 public class GameTimer {
     
+    private IntegerProperty timeProperty = new SimpleIntegerProperty();
     private EventHandler event;
-    private IntegerProperty timeProperty;
     private Timeline timeline;
     private double time;
     private double bonusTime;
     
     public GameTimer (Account account, EventHandler event) {
-        timeProperty = new SimpleIntegerProperty();
         // as a player progresses, they are allotted more time per level
         bonusTime = ((User) account).getLevel() * .1;
-        
-        switch(((User) account).getOptions().getDifficulty()) {
-            case EASY:
-                time = 200 + (200 * bonusTime);
-                break;
-            case NORMAL:
-                time = 150 + (150 * bonusTime);
-                break;
-            case HARD:
-                time = 100 + (100 * bonusTime);
-        }
-        
+        time = 150 + (150 * bonusTime);
         this.event = event;
     }
     

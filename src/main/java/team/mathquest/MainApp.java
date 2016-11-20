@@ -15,6 +15,7 @@ import static javafx.application.Application.launch;
 public class MainApp extends Application {
 
     private Stage mainStage;
+    private Scene scene;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -116,7 +117,7 @@ public class MainApp extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource(resource));
             AnchorPane page = (AnchorPane) loader.load();
-            Scene scene = new Scene(page);
+            scene = new Scene(page);
 
             // swaps to the new scene
             getMainStage().close(); // closing it first to force it to re-center
@@ -150,7 +151,7 @@ public class MainApp extends Application {
             Stage dialogStage = new Stage();
             dialogStage.setTitle(title);
             dialogStage.initOwner(getMainStage());
-            Scene scene = new Scene(page);
+            scene = new Scene(page);
             dialogStage.setScene(scene);
             
             // gives the controller access to the main app & passes it a
@@ -184,5 +185,12 @@ public class MainApp extends Application {
      */
     public Stage getMainStage() {
         return mainStage;
+    }
+    
+    /**
+     * @return the current scene
+     */
+    public Scene getScene() {
+        return scene;
     }
 }

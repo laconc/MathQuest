@@ -55,7 +55,6 @@ public class LoginController extends Controller {
             if (usernameField.getText().equals(account.getUsername())
                     && passField.getText().equals(account.getPassword())) {
                 getMainApp().showMainMenu(account);
-                removeKeyboardListener();
             }
             
         }
@@ -70,11 +69,7 @@ public class LoginController extends Controller {
                 authenticate();
         };
         
-        getMainApp().getMainStage().addEventHandler(KeyEvent.KEY_PRESSED, handler);
-    }
-    
-    private void removeKeyboardListener() {
-        getMainApp().getMainStage().removeEventHandler(KeyEvent.KEY_PRESSED, handler);
+        getMainApp().getScene().addEventHandler(KeyEvent.KEY_PRESSED, handler);
     }
     
     @FXML

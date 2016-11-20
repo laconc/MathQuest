@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.mathquest.EditUserController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="team.mathquest.EditUserController">
+   <children>
+      <CheckBox fx:id="lockDifficultyCheckbox" layoutX="50.0" layoutY="297.0" mnemonicParsing="false" text="Lock Difficulty?" />
+      <CheckBox fx:id="resetStatsCheckbox" layoutX="50.0" layoutY="339.0" mnemonicParsing="false" text="Reset User Statistics?" />
+      <Button fx:id="cancelButton" layoutX="341.0" layoutY="344.0" onAction="#handleCancelButtonAction"  mnemonicParsing="false" text="Cancel" />
+      <Button fx:id="saveButton" layoutX="453.0" layoutY="344.0" onAction="#handleSaveButtonAction"  mnemonicParsing="false" text="Save" />
+      <RadioButton fx:id="easyButton" layoutX="43.0" layoutY="102.0" mnemonicParsing="false" text="Easy" />
+      <RadioButton fx:id="normalButton" layoutX="43.0" layoutY="149.0" mnemonicParsing="false" text="Normal" />
+      <RadioButton fx:id="hardButton" layoutX="43.0" layoutY="200.0" mnemonicParsing="false" text="Hard" />
+      <CheckBox fx:id="additionCheckbox" layoutX="331.0" layoutY="94.0" mnemonicParsing="false" text="Addition" />
+      <CheckBox fx:id="subtractionCheckbox" layoutX="331.0" layoutY="132.0" mnemonicParsing="false" text="Subtraction" />
+      <CheckBox fx:id="multiplicationCheckbox" layoutX="331.0" layoutY="174.0" mnemonicParsing="false" text="Multiplication" />
+      <CheckBox fx:id="divisionCheckbox" layoutX="331.0" layoutY="217.0" mnemonicParsing="false" text="Division" />
+      <Label fx:id="difficultyLabel" layoutX="36.0" layoutY="50.0" text="Difficulty" />
+      <Label fx:id="problemTypeLabel" layoutX="331.0" layoutY="50.0" text="Problem Types" />
+      <Label fx:id="editUserLabel" layoutX="36.0" layoutY="14.0" text="Edit User" />
+      <Separator layoutX="90.0" layoutY="21.0" prefHeight="1.0" prefWidth="459.0" />
+      <Separator layoutX="260.0" layoutY="41.0" orientation="VERTICAL" prefHeight="200.0" />
+      <Separator layoutX="116.0" layoutY="268.0" prefHeight="3.0" prefWidth="430.0" />
+      <Label fx:id="otherOptionsLabel" layoutX="36.0" layoutY="261.0" text="Other Options" />
+   </children>
 </AnchorPane>

@@ -5,9 +5,8 @@
       "month": 10,
       "day": 29
     },
-    "level": 1,
-    "playerName": "Seamus",
     "options": {
+      "playerName": "Seamus",
       "locked": false,
       "difficulty": "EASY",
       "problemType": {
@@ -17,6 +16,7 @@
         "multiplication": true
       }
     },
+    "level": 1,
     "name": "Dashiel Lopez Mendez",
     "username": "dash",
     "pass": "1234"
@@ -27,9 +27,8 @@
       "month": 10,
       "day": 29
     },
-    "level": 1,
-    "playerName": "Seamus",
     "options": {
+      "playerName": "Seamus",
       "locked": false,
       "difficulty": "EASY",
       "problemType": {
@@ -39,6 +38,7 @@
         "multiplication": false
       }
     },
+    "level": 1,
     "name": "Athena Kao",
     "username": "athena",
     "pass": "1234"
@@ -49,9 +49,8 @@
       "month": 10,
       "day": 29
     },
-    "level": 1,
-    "playerName": "Seamus",
     "options": {
+      "playerName": "Seamus",
       "locked": false,
       "difficulty": "EASY",
       "problemType": {
@@ -61,6 +60,7 @@
         "multiplication": false
       }
     },
+    "level": 1,
     "name": "Emily Malnor",
     "username": "emily",
     "pass": "1234"
@@ -71,11 +71,10 @@
       "month": 10,
       "day": 29
     },
-    "level": 1,
-    "playerName": "Seamus",
     "options": {
+      "playerName": "Seamus",
       "locked": false,
-      "difficulty": "HARD",
+      "difficulty": "EASY",
       "problemType": {
         "addition": true,
         "division": false,
@@ -83,6 +82,7 @@
         "multiplication": true
       }
     },
+    "level": 1,
     "name": "Greg Luckenbach",
     "username": "greg",
     "pass": "1234"

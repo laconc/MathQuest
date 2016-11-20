@@ -29,11 +29,16 @@ public class AddUserController extends DialogBoxController {
      */
     @FXML
     private void handleSaveButtonAction(ActionEvent event) {
+        if(name != null || username != null || pass != null){
         if (isAdmin.isSelected())
             rw.updateAdminList(new Admin(name, username, pass));
         else
             rw.updateUserList(new User(name, username, pass));
         
         getDialogStage().close();
+        }
+        else{
+        //requiredFieldsError.setVisible(true); 
+        }
     }
 }

@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.GaussianBlur;
@@ -66,7 +67,8 @@ public class GameController extends Controller {
     private MathProblem problem;
     private Session session = new Session();
     private boolean isPaused = true;
-
+    private Alert alert;
+    
     @Override
     public void start(Account account) {
         super.start(account);
@@ -93,6 +95,7 @@ public class GameController extends Controller {
         
         session.setSessionStartTime(LocalDateTime.now());
         pausedState();
+        
     }
     
     private void updateLabels() {
@@ -141,6 +144,7 @@ public class GameController extends Controller {
         
         // player was defeated
         else if (!getLevel().getPlayer().isAlive()) {
+            displayPlayerDeath();
             pausedState();
             resetLevel();
         }
@@ -208,6 +212,7 @@ public class GameController extends Controller {
     
     private void advanceLevel() {
         getTimer().stopTimer();
+        displayLevelAdvance();
         ((User) getAccount()).setLevel(((User) getAccount()).getLevel() + 1);
         level = new Level(((User) getAccount()).getLevel());
     }
@@ -250,6 +255,33 @@ public class GameController extends Controller {
         getMainApp().showQuitGame(getAccount());
         // getMainApp().getMainStage().addEventHandler(KeyEvent.KEY_PRESSED, handler);
         // TODO pass session to: session.setSessionEndTime(LocalDateTime.now()) & save;
+    }
+    
+    //Creates the player died alert
+    private void displayPlayerDeath() {
+        alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Seamus died!");
+        alert.setHeaderText(null);
+        alert.setContentText("Seamus ran out of health! Try again!");
+        alert.showAndWait();
+    }
+    
+    //Creates the out of time alert
+    private void displayOutOfTime() {
+        alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Out of time!");
+        alert.setHeaderText(null);
+        alert.setContentText("Seamus needs to be faster if he wants to save his flock! Try again!");
+        alert.showAndWait();
+    }
+    
+    //Creates the new level alert
+    private void displayLevelAdvance() {
+        alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Great Job!");
+        alert.setHeaderText(null);
+        alert.setContentText("Seamus has defeated all enemies! Brace yourself for the next level!");
+        alert.showAndWait();
     }
 
     /**

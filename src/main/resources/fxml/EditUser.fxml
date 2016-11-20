@@ -4,34 +4,33 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import java.util.ArrayList?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.65" fx:controller="team.mathquest.EditUserController">
-   <fx:define>
+<AnchorPane id="AnchorPane" prefHeight="515.0" prefWidth="550.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="team.mathquest.EditUserController">
+    <fx:define>
         <ArrayList fx:id="checkboxList" >
-            <CheckBox fx:id="addCheckbox" layoutX="272.0" layoutY="101.0" mnemonicParsing="false" text="Addition" />
-            <CheckBox fx:id="subCheckbox" layoutX="272.0" layoutY="129.0" mnemonicParsing="false" text="Subtraction" />
-            <CheckBox fx:id="mulCheckbox" layoutX="272.0" layoutY="159.0" mnemonicParsing="false" text="Multiplication" />
-            <CheckBox fx:id="divCheckbox" layoutX="272.0" layoutY="187.0" mnemonicParsing="false" text="Division" />
+            <CheckBox fx:id="addCheckbox" layoutX="351.0" layoutY="254.0" mnemonicParsing="false" text="Addition" />
+            <CheckBox fx:id="subCheckbox" layoutX="351.0" layoutY="294.0" mnemonicParsing="false" text="Subtraction" />
+            <CheckBox fx:id="mulCheckbox" layoutX="351.0" layoutY="334.0" mnemonicParsing="false" text="Multiplication" />
+            <CheckBox fx:id="divCheckbox" layoutX="351.0" layoutY="374.0" mnemonicParsing="false" text="Division" />
         </ArrayList>
         
         <ArrayList fx:id="buttonList" >
-            <RadioButton fx:id="easyButton" layoutX="107.0" layoutY="110.0" mnemonicParsing="false" text="Easy">
+            <RadioButton fx:id="easyButton" layoutX="90.0" layoutY="272.0" mnemonicParsing="false" text="Easy">
                 <toggleGroup>
                     <ToggleGroup fx:id="difficultyGroup" />
                 </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="normalButton" layoutX="106.0" layoutY="138.0" mnemonicParsing="false" text="Normal" toggleGroup="$difficultyGroup" />
-            <RadioButton fx:id="hardButton" layoutX="106.0" layoutY="168.0" mnemonicParsing="false" text="Hard" toggleGroup="$difficultyGroup" />
+            <RadioButton fx:id="normalButton" layoutX="90.0" layoutY="315.0" mnemonicParsing="false" text="Normal" toggleGroup="$difficultyGroup" />
+            <RadioButton fx:id="hardButton" layoutX="90.0" layoutY="358.0" mnemonicParsing="false" text="Hard" toggleGroup="$difficultyGroup" />
         </ArrayList>
     </fx:define>
       
     <children>
-        <Label layoutX="106.0" layoutY="75.0" text="Difficulty" />
-        <Label layoutX="272.0" layoutY="75.0" text="Problems" />
-      
         <fx:reference source="easyButton" />
         <fx:reference source="normalButton" />
         <fx:reference source="hardButton" />
@@ -40,8 +39,28 @@
         <fx:reference source="subCheckbox" />
         <fx:reference source="mulCheckbox" />
         <fx:reference source="divCheckbox" />
-      
-      <Button fx:id="saveButton" layoutX="454.0" layoutY="327.0" mnemonicParsing="false" onAction="#handleSaveButtonAction" text="Save" />
-      <Button fx:id="cancelButton" layoutX="357.0" layoutY="327.0" mnemonicParsing="false" onAction="#handleCancelButtonAction" text="Cancel" />
-   </children>
+        
+        <CheckBox fx:id="lockDifficultyCheckbox" layoutX="370" layoutY="92" mnemonicParsing="false" text="Lock Difficulty?" />
+        <CheckBox fx:id="resetStatsCheckbox" layoutX="370" layoutY="39" mnemonicParsing="false" text="Reset Statistics?" />
+        
+        <Label layoutX="27" layoutY="39.0" text="Name" />
+        <Label layoutX="27" layoutY="92.0" text="Username" />
+        <Label layoutX="27" layoutY="143.0" text="Password" />
+        
+        <TextField fx:id="nameField" layoutX="135" layoutY="35.0" />
+        <TextField fx:id="usernameField" layoutX="135" layoutY="88.0" />
+        <TextField fx:id="passField" layoutX="135" layoutY="139.0" />
+        
+        <Label layoutX="90.0" layoutY="220.0" text="Difficulty" />
+        <Label layoutX="351.0" layoutY="220.0" text="Problem Types" />
+        <Label layoutX="27.0" layoutY="184.0" text="Game Settings" />
+        
+        <Separator layoutX="335" layoutY="25" orientation="VERTICAL" prefHeight="150.0" />
+        <Separator layoutX="123.0" layoutY="192.0" prefHeight="1.0" prefWidth="390.0" />
+        <Separator layoutX="260.0" layoutY="201.0" orientation="VERTICAL" prefHeight="220.0" />
+        <Separator layoutX="27.0" layoutY="429.0" prefHeight="3.0" prefWidth="486.0" />
+        
+        <Button fx:id="saveButton" layoutX="470.0" layoutY="459.0" mnemonicParsing="false" onAction="#handleSaveButtonAction" text="Save" />
+        <Button fx:id="cancelButton" layoutX="380.0" layoutY="459.0" mnemonicParsing="false" onAction="#handleCancelButtonAction" text="Cancel" />
+    </children>
 </AnchorPane>

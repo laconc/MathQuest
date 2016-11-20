@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.GaussianBlur;
@@ -60,13 +61,14 @@ public class GameController extends Controller {
     @FXML
     private ImageView enemyImage;
     
+    private Alert alert;
     private EventHandler handler;
     private Level level;
     private GameTimer timer;
     private MathProblem problem;
     private Session session = new Session();
     private boolean isPaused = true;
-
+    
     @Override
     public void start(Account account) {
         super.start(account);
@@ -82,15 +84,14 @@ public class GameController extends Controller {
                 (EventHandler<ActionEvent>) (ActionEvent t) -> {
                     pausedState();
                     resetLevel();
+                    displayOutOfTimeNotification();
                 });
         timerLabel.textProperty().bind(getTimer().getTimeProperty().asString());
         
         level = new Level(((User) getAccount()).getLevel());
         playerImage.setImage(getLevel().getPlayer().getImage());
         enemyImage.setImage(getLevel().getEnemy().getImage());
-        
         updateLabels();
-        
         session.setSessionStartTime(LocalDateTime.now());
         pausedState();
     }
@@ -134,7 +135,7 @@ public class GameController extends Controller {
             }
             // more enemies remain
             else {
-                // animation of enemy defeated
+                // TODO animation of enemy defeated
                 getLevel().newEnemy();
             }
         }
@@ -143,6 +144,7 @@ public class GameController extends Controller {
         else if (!getLevel().getPlayer().isAlive()) {
             pausedState();
             resetLevel();
+            displayPlayerDeathNotification();
         }
         
         updateLabels();
@@ -208,6 +210,7 @@ public class GameController extends Controller {
     
     private void advanceLevel() {
         getTimer().stopTimer();
+        displayLevelAdvanceNotification();
         ((User) getAccount()).setLevel(((User) getAccount()).getLevel() + 1);
         level = new Level(((User) getAccount()).getLevel());
     }
@@ -250,6 +253,37 @@ public class GameController extends Controller {
         getMainApp().showQuitGame(getAccount());
         // getMainApp().getMainStage().addEventHandler(KeyEvent.KEY_PRESSED, handler);
         // TODO pass session to: session.setSessionEndTime(LocalDateTime.now()) & save;
+    }
+    
+    // Player has died
+    private void displayPlayerDeathNotification() {
+        alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(getLevel().getPlayer().getName() + " Died!");
+        alert.setHeaderText(null);
+        alert.setContentText(getLevel().getPlayer().getName()
+                + " ran out of health! Try again!");
+        alert.showAndWait();
+    }
+    
+    // Player ran out of time
+    private void displayOutOfTimeNotification() {
+        alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Out of Time!");
+        alert.setHeaderText(null);
+        alert.setContentText(getLevel().getPlayer().getName()
+                + " needs to be faster if he wants to save his flock! Try again!");
+        alert.showAndWait();
+    }
+    
+    // Player has advanced to the next level
+    private void displayLevelAdvanceNotification() {
+        alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Great Job!");
+        alert.setHeaderText(null);
+        alert.setContentText(getLevel().getPlayer().getName()
+                + " has defeated all of the enemies!"
+                + " Brace yourself for the next level!");
+        alert.showAndWait();
     }
 
     /**

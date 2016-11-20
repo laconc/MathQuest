@@ -1,19 +1,21 @@
 package team.mathquest;
 
-import java.util.List;
 import team.mathquest.model.Account;
 import team.mathquest.model.DialogBoxController;
+import team.mathquest.model.MathProblem.ProblemType;
+import team.mathquest.model.Option.Difficulty;
 import team.mathquest.model.ReaderWriter;
 import team.mathquest.model.User;
 
+import java.util.Arrays;
+import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import team.mathquest.model.MathProblem;
-import team.mathquest.model.Option;
 
 /**
  * Controller for the Edit User dialog box.
@@ -21,6 +23,12 @@ import team.mathquest.model.Option;
  */
 public class EditUserController extends DialogBoxController {
     
+    @FXML
+    private TextField nameField;
+    @FXML
+    private TextField usernameField;
+    @FXML
+    private TextField passField;
     @FXML
     private CheckBox lockDifficultyCheckbox;
     @FXML
@@ -35,15 +43,49 @@ public class EditUserController extends DialogBoxController {
     private ReaderWriter rw = new ReaderWriter();
     private Alert alert;
     private boolean isOk = false;
-    private List<MathProblem.ProblemType> typeList;
-    private List<Option.Difficulty> difficultyList;
+    private List<ProblemType> typeList;
+    private List<Difficulty> difficultyList;
     
     @Override
-    public void start (Account account) {
+    public void start(Account account) {
         super.start(account);
         
+        typeList = Arrays.asList(ProblemType.ADDITION,
+                                 ProblemType.SUBTRACTION,
+                                 ProblemType.MULTIPLICATION,
+                                 ProblemType.DIVISION);
+
+        difficultyList = Arrays.asList(Difficulty.EASY,
+                                       Difficulty.NORMAL,
+                                       Difficulty.HARD);
+        
+        nameField.setText(getAccount().getName());
+        usernameField.setText(getAccount().getUsername());
+        passField.setText(getAccount().getPassword());
+
         if (getAccount().getType() == 'a') {
-            // TODO hide the user-specific settings
+            // hides the user-specific settings
+            for (int i = 0; i < 3; i++)
+                buttonList.get(i).setDisable(true);
+            
+            for (int i = 0; i < 4; i++)
+                checkboxList.get(i).setDisable(true);
+            
+            lockDifficultyCheckbox.setDisable(true);
+            resetStatsCheckbox.setDisable(true);
+        }
+        
+        else if (getAccount().getType() == 'u') {
+            // updates the UI with the currently-selected difficulty
+            for (int i = 0; i < 3; i++)
+                if (((User) getAccount()).getOptions().getDifficulty()
+                        == difficultyList.get(i))
+                    buttonList.get(i).setSelected(true);
+            
+            // updates the UI with the currently-selected problem types
+            for (int i = 0; i < 4; i++)
+                if (((User) getAccount()).getOptions().getFlag(typeList.get(i)))
+                    checkboxList.get(i).setSelected(true);
         }
     }
     
@@ -53,39 +95,63 @@ public class EditUserController extends DialogBoxController {
      */
     @FXML
     private void handleSaveButtonAction(ActionEvent event) {
-        if (lockDifficultyCheckbox.isSelected())
-            ((User) getAccount()).getOptions().setLocked(true);
-        if (resetStatsCheckbox.isSelected())
-            ((User) getAccount()).resetGameHistory();
-        
-        // the difficulty setting
-        for (int i = 0; i < 3; i++)
-            if (difficultyGroup.getSelectedToggle() == buttonList.get(i))
-                ((User) getAccount()).getOptions()
-                    .setDifficulty(difficultyList.get(i));
-        
-        //the problem-types setting
-        for (int i = 0; i < 4; i++) {
-            if (checkboxList.get(i).isSelected()) {
-                ((User) getAccount()).getOptions()
-                    .setFlag(typeList.get(i), true);
-                isOk = true;
-            }
-            else
-                ((User) getAccount()).getOptions()
-                    .setFlag(typeList.get(i), false);
-        }
-        
-        if (isOk) { // checks that at least one problem type was selected
-            // write to file
-            rw.updateUserList((User) getAccount(), 'u');
-            displaySaveConfirmation();
+        // the textfields should all contain some text
+        if (nameField.getText().length() > 0 &&
+            usernameField.getText().length() > 0 &&
+            passField.getText().length() > 0) {
+            
+            getAccount().setName(nameField.getText());
+            getAccount().setUsername(usernameField.getText());
+            getAccount().setPass(passField.getText());
 
-            // sends the user back to the previous screen
-            getDialogStage().close();
+            if (getAccount().getType() == 'u') {
+                if (lockDifficultyCheckbox.isSelected()) {
+                    ((User) getAccount()).getOptions().setLocked(true);
+                }
+                if (resetStatsCheckbox.isSelected()) {
+                    ((User) getAccount()).resetGameHistory();
+                }
+
+                // the difficulty setting
+                for (int i = 0; i < 3; i++) {
+                    if (difficultyGroup.getSelectedToggle() == buttonList.get(i)) {
+                        ((User) getAccount()).getOptions()
+                                .setDifficulty(difficultyList.get(i));
+                    }
+                }
+
+                //the problem-types setting
+                for (int i = 0; i < 4; i++) {
+                    if (checkboxList.get(i).isSelected()) {
+                        ((User) getAccount()).getOptions()
+                                .setFlag(typeList.get(i), true);
+                        isOk = true;
+                    } else {
+                        ((User) getAccount()).getOptions()
+                                .setFlag(typeList.get(i), false);
+                    }
+                }
+                
+                // checks that at least one problem type was selected
+                if (isOk) {
+                    // write to file
+                    rw.updateUserList(getAccount(), 'u');
+                    displaySaveConfirmation();
+                    getDialogStage().close();
+                }
+                else
+                    displayProblemTypeError();
+            }
+            
+            else if (getAccount().getType() == 'a') {
+                // write to file
+                rw.updateAdminList(getAccount(), 'u');
+                displaySaveConfirmation();
+                getDialogStage().close();
+            }
         }
         else
-            displayProblemTypeError();
+            displayEmptyTextboxError();
     }
     
     /**
@@ -114,6 +180,14 @@ public class EditUserController extends DialogBoxController {
         alert.setTitle("Error");
         alert.setHeaderText(null);
         alert.setContentText("At least one problem type needs to be selected.");
+        alert.showAndWait();
+    }
+    
+    private void displayEmptyTextboxError() {
+        alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText("All of the textboxes need to be filled.");
         alert.showAndWait();
     }
 }

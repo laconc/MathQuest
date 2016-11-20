@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="303.0" prefWidth="287.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.mathquest.AdminToolsController">
+<AnchorPane id="AnchorPane" fx:id="AdminTools" prefHeight="384.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.mathquest.AdminToolsController">
    <children>
-      <Label layoutX="42.0" layoutY="124.0" text="Edit User" />
-      <ChoiceBox fx:id="editUserChoiceBox" layoutX="43.0" layoutY="152.0" prefWidth="150.0" />
-      <Button fx:id="mainMenuButton" layoutX="105.0" layoutY="242.0" mnemonicParsing="false" onAction="#handleMainMenuButtonAction" text="Main Menu" />
-      <Button fx:id="addUserButton" layoutX="109.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleAddUserButtonAction" text="Add User" />
-      <Button fx:id="editUserButton" layoutX="205.0" layoutY="152.0" mnemonicParsing="false" onAction="#handleEditUserButtonAction" text="Edit" />
+      <Label fx:id="editUserLabel" layoutX="32.0" layoutY="263.0" text="Edit User" />
+      <ChoiceBox fx:id="editUserChoiceBox" layoutX="32.0" layoutY="296.0" prefWidth="150.0" />
+      <Button fx:id="mainMenuButton" layoutX="340.0" layoutY="336.0" mnemonicParsing="false" onAction="#handleMainMenuButtonAction" text="Main Menu" />
+      <Button fx:id="addUserButton" layoutX="349.0" layoutY="161.0" mnemonicParsing="false" onAction="#handleAddUserButtonAction" text="Add User" />
+      <Button fx:id="editUserButton" layoutX="204.0" layoutY="296.0" mnemonicParsing="false" onAction="#handleEditUserButtonAction" text="Edit" />
+      <Separator layoutX="96.0" layoutY="270.0" prefHeight="5.0" prefWidth="326.0" />
+      <Separator layoutX="121.0" layoutY="29.0" prefHeight="5.0" prefWidth="301.0" />
+      <TextField fx:id="nameField" layoutX="138.0" layoutY="61.0" />
+      <TextField fx:id="usernameField" layoutX="138.0" layoutY="111.0" />
+      <TextField fx:id="passField" layoutX="138.0" layoutY="161.0" />
+      <Label layoutX="26.0" layoutY="22.0" text="Add New User" />
+      <Label layoutX="30.0" layoutY="65.0" text="Name" />
+      <Label layoutX="30.0" layoutY="115.0" text="Username" />
+      <Label layoutX="30.0" layoutY="165.0" text="Password" />
+      <CheckBox fx:id="setAdminCheckbox" layoutX="31.0" layoutY="215.0" mnemonicParsing="false" text="Set User as Administrator?" />
    </children>
 </AnchorPane>

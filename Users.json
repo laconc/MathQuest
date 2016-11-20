@@ -11,9 +11,9 @@
       "difficulty": "EASY",
       "problemType": {
         "addition": true,
-        "division": true,
+        "division": false,
         "subtraction": true,
-        "multiplication": true
+        "multiplication": false
       }
     },
     "gameHistory": [],
@@ -77,7 +77,7 @@
     "options": {
       "playerName": "Seamus",
       "locked": false,
-      "difficulty": "HARD",
+      "difficulty": "EASY",
       "problemType": {
         "addition": true,
         "division": false,

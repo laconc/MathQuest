@@ -6,7 +6,7 @@ public abstract class Account {
     private String pass;
     
     /**
-     * This constructor creates an account with the default password '1234'.
+     * Creates an account with the default password '1234'.
      * 
      */
     public Account(String name, String username) {
@@ -16,7 +16,7 @@ public abstract class Account {
     }
     
     /**
-     * This constructor creates an account with the password given.
+     * Creates an account with the password given.
      * 
      */
     public Account(String name, String username, String pass) {

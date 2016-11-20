@@ -56,7 +56,6 @@ public class LoginController extends Controller {
                     && passField.getText().equals(account.getPassword())) {
                 getMainApp().showMainMenu(account);
             }
-            
         }
         
         // displays the error if the account info doesn't match

@@ -12,7 +12,7 @@ public class User extends Account {
     private int level;
 
     /**
-     * This constructor creates an account with the default password '1234'.
+     * Creates an account with the default password '1234'.
      * Uses the constructor from Account.
      *
      */
@@ -23,7 +23,7 @@ public class User extends Account {
     }
 
     /**
-     * This constructor creates an account with the password given.
+     * Creates an account with the password given.
      * Uses the constructor from Account.
      *
      */

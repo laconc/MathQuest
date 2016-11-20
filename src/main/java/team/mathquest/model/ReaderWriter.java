@@ -18,8 +18,8 @@ import java.util.List;
 public class ReaderWriter {
 
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    private Type userType = new TypeToken<ArrayList<User>>(){}.getType();
     private Type adminType = new TypeToken<ArrayList<Admin>>(){}.getType();
+    private Type userType = new TypeToken<ArrayList<User>>(){}.getType();
 
     private FileWriter writer;
     private BufferedReader reader;
@@ -59,18 +59,22 @@ public class ReaderWriter {
     }
     
     /**
-    * Updates a user account.
+    * Updates the list of user accounts.
     *
     * @param account the account to update
     */
-    public void updateUserList(User account) {
+    public void updateUserList(Account account) {
         try {
             reader = new BufferedReader(new FileReader("Users.json"));
             accounts = gson.fromJson(reader, userType);
             
             for (int i = 0; i < accounts.size(); i++) {
+                // update an existing account
                 if (accounts.get(i).getUsername().equals(account.getUsername()))
                     accounts.set(i, account);
+                // add a new account
+                else
+                    accounts.add(account);
             }
             
             json = gson.toJson(accounts, userType);
@@ -114,18 +118,22 @@ public class ReaderWriter {
     }
     
     /**
-    * Updates an admin account.
+    * Updates the list of admin accounts.
     *
     * @param account the account to update
     */
-    public void updateAdminList(User account) {
+    public void updateAdminList(Account account) {
         try {
             reader = new BufferedReader(new FileReader("Admins.json"));
             accounts = gson.fromJson(reader, adminType);
             
             for (int i = 0; i < accounts.size(); i++) {
+                // update an existing account
                 if (accounts.get(i).getUsername().equals(account.getUsername()))
                     accounts.set(i, account);
+                // add a new account
+                else
+                    accounts.add(account);
             }
             
             json = gson.toJson(accounts, adminType);

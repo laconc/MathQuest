@@ -85,6 +85,28 @@ public class MainApp extends Application {
     }
     
     /**
+    * Displays the Add User dialog box.
+    *
+    * @param account the account that was used to log in
+    */
+    public void showAddUser(Account account) {
+        String resource = "/fxml/AddUser.fxml";
+        String title = "Add User";
+        displayDialog(resource, account, title);
+    }
+    
+    /**
+    * Displays the Edit User dialog box.
+    *
+    * @param account the account to be edited
+    */
+    public void showEditUser(Account account) {
+        String resource = "/fxml/EditUser.fxml";
+        String title = "Edit User";
+        displayDialog(resource, account, title);
+    }
+    
+    /**
     * Displays the Quit Game dialog box.
     *
     * @param account the account that was used to log in

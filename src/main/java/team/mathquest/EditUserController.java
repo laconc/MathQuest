@@ -37,12 +37,11 @@ public class EditUserController extends DialogBoxController {
     }
     
     /**
-     * Saves the changes and returns the user to the previous screen.
+     * Returns the user to the previous screen without saving.
      *
      */
     @FXML
     private void handleCancelButtonAction(ActionEvent event) {
-        // TODO save changes
         getDialogStage().close();
     }
 }

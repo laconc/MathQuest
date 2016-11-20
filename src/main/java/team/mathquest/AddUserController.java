@@ -43,8 +43,6 @@ public class AddUserController extends DialogBoxController {
      */
     @FXML
     private void handleSaveButtonAction(ActionEvent event) {
-
-
         if (isValid()) {
             if (isAdminCheckbox.isSelected())
                 rw.updateAdminList(new Admin(name, username, pass), 'n');
@@ -62,7 +60,6 @@ public class AddUserController extends DialogBoxController {
      */
     @FXML
     private void handleCancelButtonAction(ActionEvent event) {
-
         getDialogStage().close();
     }
     

@@ -78,11 +78,11 @@ public class GameController extends Controller {
                 ((User) getAccount()).getOptions().getFlag(ProblemType.MULTIPLICATION),
                 ((User) getAccount()).getOptions().getFlag(ProblemType.DIVISION));
         
-        timer = new GameTimer(account);
-        timer.setEvent((EventHandler<ActionEvent>) (ActionEvent t) -> {
-            pausedState();
-            resetLevel();
-        });
+        timer = new GameTimer(account,
+                (EventHandler<ActionEvent>) (ActionEvent t) -> {
+                    pausedState();
+                    resetLevel();
+                });
         timerLabel.textProperty().bind(getTimer().getTimeProperty().asString());
         
         level = new Level(((User) getAccount()).getLevel());

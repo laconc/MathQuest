@@ -16,7 +16,7 @@ public class GameTimer {
     private double time;
     private double bonusTime;
     
-    public GameTimer (Account account) {
+    public GameTimer (Account account, EventHandler event) {
         timeProperty = new SimpleIntegerProperty();
         // as a player progresses, they are allotted more time per level
         bonusTime = ((User) account).getLevel() * .1;
@@ -31,6 +31,8 @@ public class GameTimer {
             case HARD:
                 time = 100 + (100 * bonusTime);
         }
+        
+        this.event = event;
     }
     
     public void startTimer() {
@@ -47,10 +49,6 @@ public class GameTimer {
         if (timeline != null) {
             timeline.stop();
         }
-    }
-    
-    public void setEvent(EventHandler event) {
-        this.event = event;
     }
 
     /**

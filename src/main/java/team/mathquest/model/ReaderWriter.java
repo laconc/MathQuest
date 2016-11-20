@@ -62,21 +62,26 @@ public class ReaderWriter {
     * Updates the list of user accounts.
     *
     * @param account the account to update
+    * @param update 'n' to add a new account, 'u' to update an existing account
     */
-    public void updateUserList(Account account) {
+    public void updateUserList(Account account, char update) {
         try {
             reader = new BufferedReader(new FileReader("Users.json"));
             accounts = gson.fromJson(reader, userType);
-            
-            for (int i = 0; i < accounts.size(); i++) {
-                // update an existing account
-                if (accounts.get(i).getUsername().equals(account.getUsername()))
-                    accounts.set(i, account);
-                // add a new account
-                else
+
+            switch (update) {
+                case 'n':
                     accounts.add(account);
+                    break;
+                case 'u':
+                    for (int i = 0; i < accounts.size(); i++) {
+                        if (accounts.get(i).getUsername()
+                                .equals(account.getUsername())) {
+                            accounts.set(i, account);
+                        }
+                    }
             }
-            
+
             json = gson.toJson(accounts, userType);
             writer = new FileWriter("Users.json");
             writer.write(json);
@@ -121,19 +126,24 @@ public class ReaderWriter {
     * Updates the list of admin accounts.
     *
     * @param account the account to update
+    * @param update 'n' to add a new account, 'u' to update an existing account
     */
-    public void updateAdminList(Account account) {
+    public void updateAdminList(Account account, char update) {
         try {
             reader = new BufferedReader(new FileReader("Admins.json"));
             accounts = gson.fromJson(reader, adminType);
             
-            for (int i = 0; i < accounts.size(); i++) {
-                // update an existing account
-                if (accounts.get(i).getUsername().equals(account.getUsername()))
-                    accounts.set(i, account);
-                // add a new account
-                else
+            switch (update) {
+                case 'n':
                     accounts.add(account);
+                    break;
+                case 'u':
+                    for (int i = 0; i < accounts.size(); i++) {
+                        if (accounts.get(i).getUsername()
+                                .equals(account.getUsername())) {
+                            accounts.set(i, account);
+                        }
+                    }
             }
             
             json = gson.toJson(accounts, adminType);

@@ -111,7 +111,7 @@ public class OptionsController extends Controller {
         
         if (isOk) { // checks that at least one problem type was selected
             // write to file
-            rw.updateUserList((User) getAccount());
+            rw.updateUserList((User) getAccount(), 'u');
             displaySaveConfirmation();
 
             // sends the user back to the main menu

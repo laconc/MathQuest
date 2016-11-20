@@ -43,7 +43,6 @@ public class EditUserController extends DialogBoxController {
     @FXML
     private void handleCancelButtonAction(ActionEvent event) {
         // TODO save changes
-        
         getDialogStage().close();
     }
 }

@@ -44,12 +44,12 @@
          <Label fx:id="levelNumberLabel" layoutX="480.0" layoutY="51.0" />
          <Label fx:id="enemyHpLabel" layoutX="120.0" layoutY="342.0" />
          <Label fx:id="playerHpLabel" layoutX="507.0" layoutY="342.0" />
-         <Label fx:id="playerNameLabel" layoutX="424.0" layoutY="323.0" prefHeight="17.0" prefWidth="141.0">
+         <Label fx:id="playerNameLabel" layoutX="438.0" layoutY="323.0" prefHeight="17.0" prefWidth="141.0">
             <font>
                <Font name="System Bold" size="13.0" />
             </font>
          </Label>
-         <Label fx:id="enemyNameLabel" layoutX="40.0" layoutY="323.0" prefHeight="17.0" prefWidth="141.0">
+         <Label fx:id="enemyNameLabel" layoutX="49.0" layoutY="323.0" prefHeight="17.0" prefWidth="141.0">
             <font>
                <Font name="System Bold" size="13.0" />
             </font>

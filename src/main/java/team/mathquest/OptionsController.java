@@ -16,6 +16,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
 /**
@@ -27,6 +28,8 @@ public class OptionsController extends Controller {
     private ToggleGroup difficultyGroup;
     @FXML
     private Button saveButton;
+    @FXML
+    private TextField playerNameField;
     @FXML
     private List<RadioButton> buttonList;
     @FXML
@@ -63,6 +66,9 @@ public class OptionsController extends Controller {
             saveButton.setDisable(true);
         }
         
+        // updates the UI with the player's name
+        playerNameField.setText(((User) getAccount()).getOptions().getPlayerName());
+        
         // updates the UI with the currently-selected difficulty
         for (int i = 0; i < 3; i++)
             if (((User) getAccount()).getOptions().getDifficulty()
@@ -90,6 +96,8 @@ public class OptionsController extends Controller {
      */
     @FXML
     private void handleSaveButtonAction(ActionEvent event) {
+        
+        ((User) getAccount()).getOptions().setPlayerName(playerNameField.getText());
         
         // the difficulty setting
         for (int i = 0; i < 3; i++)

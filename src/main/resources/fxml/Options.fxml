@@ -4,33 +4,37 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import java.util.ArrayList?>
 
-<AnchorPane id="AnchorPane" prefHeight="324.0" prefWidth="441.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.mathquest.OptionsController">
+<AnchorPane id="AnchorPane" prefHeight="300" prefWidth="335" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.mathquest.OptionsController">
     <fx:define>
         <ArrayList fx:id="checkboxList" >
-            <CheckBox fx:id="addCheckbox" layoutX="272.0" layoutY="101.0" mnemonicParsing="false" text="Addition" />
-            <CheckBox fx:id="subCheckbox" layoutX="272.0" layoutY="129.0" mnemonicParsing="false" text="Subtraction" />
-            <CheckBox fx:id="mulCheckbox" layoutX="272.0" layoutY="159.0" mnemonicParsing="false" text="Multiplication" />
-            <CheckBox fx:id="divCheckbox" layoutX="272.0" layoutY="187.0" mnemonicParsing="false" text="Division" />
+            <CheckBox fx:id="addCheckbox" layoutX="190" layoutY="111.0" mnemonicParsing="false" text="Addition" />
+            <CheckBox fx:id="subCheckbox" layoutX="190" layoutY="139.0" mnemonicParsing="false" text="Subtraction" />
+            <CheckBox fx:id="mulCheckbox" layoutX="190" layoutY="169.0" mnemonicParsing="false" text="Multiplication" />
+            <CheckBox fx:id="divCheckbox" layoutX="190" layoutY="197.0" mnemonicParsing="false" text="Division" />
         </ArrayList>
         
         <ArrayList fx:id="buttonList" >
-            <RadioButton fx:id="easyButton" layoutX="107.0" layoutY="110.0" mnemonicParsing="false" text="Easy">
+            <RadioButton fx:id="easyButton" layoutX="45" layoutY="110.0" mnemonicParsing="false" text="Easy">
                 <toggleGroup>
                     <ToggleGroup fx:id="difficultyGroup" />
                 </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="normalButton" layoutX="106.0" layoutY="138.0" mnemonicParsing="false" text="Normal" toggleGroup="$difficultyGroup" />
-            <RadioButton fx:id="hardButton" layoutX="106.0" layoutY="168.0" mnemonicParsing="false" text="Hard" toggleGroup="$difficultyGroup" />
+            <RadioButton fx:id="normalButton" layoutX="45" layoutY="138.0" mnemonicParsing="false" text="Normal" toggleGroup="$difficultyGroup" />
+            <RadioButton fx:id="hardButton" layoutX="45" layoutY="168.0" mnemonicParsing="false" text="Hard" toggleGroup="$difficultyGroup" />
         </ArrayList>
     </fx:define>
       
     <children>
-        <Label layoutX="106.0" layoutY="75.0" text="Difficulty" />
-        <Label layoutX="272.0" layoutY="75.0" text="Problems" />
+        <Label layoutX="45" layoutY="85.0" text="Difficulty" />
+        <Label layoutX="190" layoutY="85.0" text="Problems" />
+        
+        <Label layoutX="25" layoutY="34" text="Player's Name" />
+        <TextField fx:id="playerNameField" layoutX="140" layoutY="29" />
       
         <fx:reference source="easyButton" />
         <fx:reference source="normalButton" />
@@ -41,7 +45,7 @@
         <fx:reference source="mulCheckbox" />
         <fx:reference source="divCheckbox" />
       
-        <Button fx:id="cancelButton" layoutX="234.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleCancelButtonAction" text="Cancel" />
-        <Button fx:id="saveButton" layoutX="333.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleSaveButtonAction" prefHeight="25.0" prefWidth="67.0" text="Save" />
+        <Button fx:id="cancelButton" layoutX="150" layoutY="250" mnemonicParsing="false" onAction="#handleCancelButtonAction" text="Cancel" />
+        <Button fx:id="saveButton" layoutX="240" layoutY="250" mnemonicParsing="false" onAction="#handleSaveButtonAction" prefHeight="25.0" prefWidth="67.0" text="Save" />
     </children>
 </AnchorPane>

@@ -96,7 +96,7 @@ public class GameController extends Controller {
     
     private void updateLabels() {
         levelNumberLabel.setText(Integer.toString(getLevel().getLevelNumber()));
-        playerNameLabel.setText(getLevel().getPlayer().getName());
+        playerNameLabel.setText(((User) getAccount()).getOptions().getPlayerName());
         playerHpLabel.setText(Integer.toString(getLevel().getPlayer().getHealth()));
         enemyHpLabel.setText(Integer.toString(getLevel().getEnemy().getHealth()));
         enemyNameLabel.setText(getLevel().getEnemy().getName());

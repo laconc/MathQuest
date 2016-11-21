@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="mainAnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.mathquest.GameController">
+<AnchorPane id="AnchorPane" fx:id="mainAnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.mathquest.GameController">
     <children>
         <AnchorPane fx:id="subAnchorPane" layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="600.0">
             <Label layoutX="49.0" layoutY="342.0" prefHeight="17.0" prefWidth="141.0" text="Enemy HP:" />
@@ -37,7 +37,7 @@
                     <Font size="36.0" />
                 </font>
             </TextField>
-            <Label layoutX="46.0" layoutY="51.0" prefHeight="17.0" prefWidth="106.0" text="Enemy    of" />
+            <Label layoutX="46.0" layoutY="51.0" prefHeight="17.0" prefWidth="106.0" text="Enemy      of" />
             <Label layoutX="438.0" layoutY="51.0" prefHeight="17.0" prefWidth="112.0" text="Stage:" />
             <Label layoutX="281.0" layoutY="30.0" text="Time: " />
          <Label fx:id="timerLabel" layoutX="320.0" layoutY="30.0" text="" />

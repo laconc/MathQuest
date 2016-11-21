@@ -37,14 +37,13 @@
                     <Font size="36.0" />
                 </font>
             </TextField>
-            <Label layoutX="46.0" layoutY="51.0" prefHeight="17.0" prefWidth="106.0" text="Enemy      of" />
+            <Label fx:id="enemyNumberLabel" layoutX="46.0" layoutY="51.0" prefHeight="17.0" prefWidth="106.0" text="" />
             <Label layoutX="438.0" layoutY="51.0" prefHeight="17.0" prefWidth="112.0" text="Stage:" />
             <Label layoutX="281.0" layoutY="30.0" text="Time: " />
          <Label fx:id="timerLabel" layoutX="320.0" layoutY="30.0" text="" />
          <Label fx:id="levelNumberLabel" layoutX="480.0" layoutY="51.0" />
          <Label fx:id="enemyHpLabel" layoutX="120.0" layoutY="342.0" />
          <Label fx:id="playerHpLabel" layoutX="507.0" layoutY="342.0" />
-         <Label fx:id="enemyTotalLabel" layoutX="119.0" layoutY="51.0" />
          <Label fx:id="playerNameLabel" layoutX="424.0" layoutY="323.0" prefHeight="17.0" prefWidth="141.0">
             <font>
                <Font name="System Bold" size="13.0" />
@@ -55,7 +54,6 @@
                <Font name="System Bold" size="13.0" />
             </font>
          </Label>
-         <Label fx:id="enemyNumberLabel" layoutX="92.0" layoutY="51.0" />
         </AnchorPane>
         <Label fx:id="instructionsLabel" alignment="CENTER" layoutX="95.0" layoutY="140.0" prefHeight="78.0" prefWidth="423.0" style="-fx-border-color: green; -fx-background-color: #F4EDF4;" text="Press 'Enter' to begin" textAlignment="CENTER" textFill="#3cb57f">
             <font>

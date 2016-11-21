@@ -43,8 +43,6 @@ public class GameController extends Controller {
     @FXML
     private Label enemyNumberLabel;
     @FXML
-    private Label enemyTotalLabel;
-    @FXML
     private Label playerHpLabel;
     @FXML
     private Label enemyHpLabel;
@@ -102,8 +100,9 @@ public class GameController extends Controller {
         playerHpLabel.setText(Integer.toString(getLevel().getPlayer().getHealth()));
         enemyHpLabel.setText(Integer.toString(getLevel().getEnemy().getHealth()));
         enemyNameLabel.setText(getLevel().getEnemy().getName());
-        enemyNumberLabel.setText(Integer.toString(getLevel().getEnemyNumber()));
-        enemyTotalLabel.setText(Integer.toString(getLevel().getEnemyPackSize()));
+        enemyNumberLabel.setText("Enemy "
+                + Integer.toString(getLevel().getEnemyNumber())
+                + " of " + Integer.toString(getLevel().getEnemyPackSize()));
     }
     
     private void pausedState() {

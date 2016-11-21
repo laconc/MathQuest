@@ -82,9 +82,9 @@ public class GameController extends Controller {
         
         timer = new GameTimer(account,
                 (EventHandler<ActionEvent>) (ActionEvent t) -> {
+                    displayOutOfTimeNotification();
                     pausedState();
                     resetLevel();
-                    displayOutOfTimeNotification();
                 });
         timerLabel.textProperty().bind(getTimer().getTimeProperty().asString());
         
@@ -272,7 +272,7 @@ public class GameController extends Controller {
         alert.setHeaderText(null);
         alert.setContentText(getLevel().getPlayer().getName()
                 + " needs to be faster if he wants to save his flock! Try again!");
-        alert.showAndWait();
+        alert.show();
     }
     
     // Player has advanced to the next level

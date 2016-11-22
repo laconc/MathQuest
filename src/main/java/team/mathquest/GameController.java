@@ -9,7 +9,9 @@ import team.mathquest.model.MathProblem.ProblemType;
 import team.mathquest.model.Session;
 import team.mathquest.model.User;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -66,6 +68,8 @@ public class GameController extends Controller {
     private MathProblem problem;
     private Session session = new Session();
     private boolean isPaused = true;
+    private long totalTime = 0;
+    private LocalTime time;
     
     @Override
     public void start(Account account) {
@@ -106,21 +110,22 @@ public class GameController extends Controller {
     }
     
     private void pausedState() {
+        if (time != null)
+            totalTime += Duration.between(time, LocalTime.now()).getSeconds();
         isPaused = true;
         topValueLabel.setText("");
         bottomValueLabel.setText("");
         operatorLabel.setText("");
         answerField.setText("");
-        // add time used to 'total time' for the session
         displayInstructions();
     }
     
     private void runningState() {
-        // the first time around
         if (isPaused) {
             isPaused = false;
             closeInstructions();
             getTimer().startTimer();
+            time = LocalTime.now();
         }
         
         newProblem();
@@ -211,6 +216,7 @@ public class GameController extends Controller {
         getTimer().stopTimer();
         displayLevelAdvanceNotification();
         ((User) getAccount()).setLevel(((User) getAccount()).getLevel() + 1);
+        session.incrementLevelsCompleted();
         level = new Level(((User) getAccount()).getLevel());
     }
     
@@ -249,9 +255,28 @@ public class GameController extends Controller {
      */
     @FXML
     private void handleQuitButtonAction(ActionEvent event) {
+        // TODO remove in favor of exit()
+        if (time != null)
+            totalTime += Duration.between(time, LocalTime.now()).getSeconds();
+        session.setTotalTime(totalTime);
+        session.setSessionEndTime(LocalDateTime.now());
+        session.incrementGamesPlayed();
+        ((User) getAccount()).addHistorySession(session);
+        // --------
         getMainApp().showQuitGame(getAccount());
-        // getMainApp().getMainStage().addEventHandler(KeyEvent.KEY_PRESSED, handler);
-        // TODO pass session to: session.setSessionEndTime(LocalDateTime.now()) & save;
+    }
+    
+    // TODO find a way to execute from QuitGameController
+    // if user quits
+    public void exit() {
+        // if they choose to save and quit
+        getTimer().stopTimer(); // if running
+        if (time != null)
+            totalTime += Duration.between(time, LocalTime.now()).getSeconds();
+        session.setTotalTime(totalTime);
+        session.setSessionEndTime(LocalDateTime.now());
+        session.incrementGamesPlayed();
+        ((User) getAccount()).addHistorySession(session);
     }
     
     // Player has died
@@ -259,7 +284,7 @@ public class GameController extends Controller {
         alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(getLevel().getPlayer().getName() + " Died!");
         alert.setHeaderText(null);
-        alert.setContentText(getLevel().getPlayer().getName()
+        alert.setContentText(((User) getAccount()).getOptions().getPlayerName()
                 + " ran out of health! Try again!");
         alert.showAndWait();
     }
@@ -269,7 +294,7 @@ public class GameController extends Controller {
         alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Out of Time!");
         alert.setHeaderText(null);
-        alert.setContentText(getLevel().getPlayer().getName()
+        alert.setContentText(((User) getAccount()).getOptions().getPlayerName()
                 + " needs to be faster if he wants to save his flock! Try again!");
         alert.show();
     }
@@ -279,7 +304,7 @@ public class GameController extends Controller {
         alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Great Job!");
         alert.setHeaderText(null);
-        alert.setContentText(getLevel().getPlayer().getName()
+        alert.setContentText(((User) getAccount()).getOptions().getPlayerName()
                 + " has defeated all of the enemies!"
                 + " Brace yourself for the next level!");
         alert.showAndWait();

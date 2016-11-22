@@ -1,6 +1,7 @@
 package team.mathquest;
 
 import team.mathquest.model.DialogBoxController;
+import team.mathquest.model.ReaderWriter;
 import team.mathquest.model.User;
 
 import javafx.event.ActionEvent;
@@ -12,6 +13,8 @@ import javafx.fxml.FXML;
  *
  */
 public class QuitGameController extends DialogBoxController {
+    
+    private ReaderWriter rw = new ReaderWriter();
 
     /**
      * Saves the user's progress and returns them to the main menu.
@@ -19,8 +22,7 @@ public class QuitGameController extends DialogBoxController {
      */
     @FXML
     private void handleSaveButtonAction(ActionEvent event) {
-        // ((User) getAccount()).addHistorySession(session);
-        
+        rw.updateUserList(getAccount(), 'u');
         getMainApp().showMainMenu(getAccount());
     }
     

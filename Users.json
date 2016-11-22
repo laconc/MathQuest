@@ -16,8 +16,181 @@
         "multiplication": true
       }
     },
-    "gameHistory": [],
-    "level": 1,
+    "gameHistory": [
+      {
+        "sessionStartTime": {
+          "date": {
+            "year": 2016,
+            "month": 11,
+            "day": 21
+          },
+          "time": {
+            "hour": 21,
+            "minute": 6,
+            "second": 0,
+            "nano": 467000000
+          }
+        },
+        "sessionEndTime": {
+          "date": {
+            "year": 2016,
+            "month": 11,
+            "day": 21
+          },
+          "time": {
+            "hour": 21,
+            "minute": 7,
+            "second": 14,
+            "nano": 71000000
+          }
+        },
+        "gamesPlayed": 1,
+        "levelsCompleted": 1,
+        "problemsSolved": [
+          11,
+          0,
+          14,
+          0
+        ],
+        "problemsMissed": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "totalTime": 125
+      },
+      {
+        "sessionStartTime": {
+          "date": {
+            "year": 2016,
+            "month": 11,
+            "day": 21
+          },
+          "time": {
+            "hour": 21,
+            "minute": 14,
+            "second": 36,
+            "nano": 671000000
+          }
+        },
+        "sessionEndTime": {
+          "date": {
+            "year": 2016,
+            "month": 11,
+            "day": 21
+          },
+          "time": {
+            "hour": 21,
+            "minute": 14,
+            "second": 48,
+            "nano": 535000000
+          }
+        },
+        "gamesPlayed": 1,
+        "levelsCompleted": 0,
+        "problemsSolved": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "problemsMissed": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "totalTime": 11
+      },
+      {
+        "sessionStartTime": {
+          "date": {
+            "year": 2016,
+            "month": 11,
+            "day": 21
+          },
+          "time": {
+            "hour": 21,
+            "minute": 14,
+            "second": 56,
+            "nano": 834000000
+          }
+        },
+        "sessionEndTime": {
+          "date": {
+            "year": 2016,
+            "month": 11,
+            "day": 21
+          },
+          "time": {
+            "hour": 21,
+            "minute": 15,
+            "second": 0,
+            "nano": 919000000
+          }
+        },
+        "gamesPlayed": 1,
+        "levelsCompleted": 0,
+        "problemsSolved": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "problemsMissed": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "totalTime": 2
+      },
+      {
+        "sessionStartTime": {
+          "date": {
+            "year": 2016,
+            "month": 11,
+            "day": 21
+          },
+          "time": {
+            "hour": 21,
+            "minute": 15,
+            "second": 6,
+            "nano": 149000000
+          }
+        },
+        "sessionEndTime": {
+          "date": {
+            "year": 2016,
+            "month": 11,
+            "day": 21
+          },
+          "time": {
+            "hour": 21,
+            "minute": 15,
+            "second": 43,
+            "nano": 455000000
+          }
+        },
+        "gamesPlayed": 1,
+        "levelsCompleted": 0,
+        "problemsSolved": [
+          8,
+          0,
+          8,
+          0
+        ],
+        "problemsMissed": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "totalTime": 33
+      }
+    ],
+    "level": 2,
     "name": "Dashiel Lopez Mendez",
     "username": "dash",
     "pass": "1234"

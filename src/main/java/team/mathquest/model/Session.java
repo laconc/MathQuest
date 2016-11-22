@@ -7,13 +7,14 @@ public class Session {
     
     private LocalDateTime sessionStartTime;
     private LocalDateTime sessionEndTime;
-    private int stagesCompleted;
+    private int gamesPlayed;
+    private int levelsCompleted;
     private int[] problemsSolved;
     private int[] problemsMissed;
-    private double totalTime;
+    private long totalTime;
     
     public Session() {
-        stagesCompleted = 0;
+        levelsCompleted = 0;
         problemsSolved = new int[4];
         problemsMissed = new int[4];
         totalTime = 0;
@@ -46,19 +47,33 @@ public class Session {
     public void setSessionEndTime(LocalDateTime sessionEndTime) {
         this.sessionEndTime = sessionEndTime;
     }
+    
+    /**
+     * @return the number of games played
+     */
+    public int getGamesPlayed() {
+        return gamesPlayed;
+    }
+    
+    /**
+     * Adds 1 to the number of games played.
+     */
+    public void incrementGamesPlayed() {
+        gamesPlayed += 1;
+    }
 
     /**
      * @return the number of stages completed
      */
-    public int getStagesCompleted() {
-        return stagesCompleted;
+    public int getLevelsCompleted() {
+        return levelsCompleted;
     }
 
     /**
-     * Adds 1 to the number of stages completed.
+     * Adds 1 to the number of levels completed.
      */
-    public void incrementStagesCompleted() {
-        this.stagesCompleted += 1;
+    public void incrementLevelsCompleted() {
+        levelsCompleted += 1;
     }
 
     /**
@@ -69,13 +84,13 @@ public class Session {
         
         switch (type) {
             case ADDITION:
-                return problemsSolved[0] += 1;
+                return problemsSolved[0];
             case SUBTRACTION:
-                return problemsSolved[1] += 1;
+                return problemsSolved[1];
             case MULTIPLICATION:
-                return problemsSolved[2] += 1;
+                return problemsSolved[2];
             case DIVISION:
-                return problemsSolved[3] += 1;
+                return problemsSolved[3];
             default:
                 return -1;
         }
@@ -109,13 +124,13 @@ public class Session {
         
         switch (type) {
             case ADDITION:
-                return problemsMissed[0] += 1;
+                return problemsMissed[0];
             case SUBTRACTION:
-                return problemsMissed[1] += 1;
+                return problemsMissed[1];
             case MULTIPLICATION:
-                return problemsMissed[2] += 1;
+                return problemsMissed[2];
             case DIVISION:
-                return problemsMissed[3] += 1;
+                return problemsMissed[3];
             default:
                 return -1;
         }
@@ -151,7 +166,7 @@ public class Session {
     /**
      * @param totalTime sets the total time spent solving problems
      */
-    public void setTotalTime(double totalTime) {
+    public void setTotalTime(long totalTime) {
         this.totalTime = totalTime;
     }
     
@@ -163,7 +178,7 @@ public class Session {
     }
     
     /**
-     * @return the total number of questions answered correctly
+     * @return the total number of questions answered
      */
     public int getTotalQuestions() {
         return getTotalCorrect() + getTotalMissed();

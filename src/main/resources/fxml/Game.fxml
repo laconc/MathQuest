@@ -15,7 +15,6 @@
             <Label layoutX="438.0" layoutY="342.0" prefHeight="17.0" prefWidth="141.0" text="Player HP:" />
             <ImageView fx:id="enemyImage" fitHeight="216.0" fitWidth="204.0" layoutX="29.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="playerImage" fitHeight="216.0" fitWidth="164.0" layoutX="424.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="quitButton" layoutX="534.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleQuitButtonAction" text="Quit" />
             <Label fx:id="topValueLabel" alignment="CENTER_RIGHT" layoutX="218.0" layoutY="63.0" prefHeight="101.0" prefWidth="155.0" textAlignment="RIGHT">
                 <font>
                     <Font size="83.0" />
@@ -55,6 +54,7 @@
             </font>
          </Label>
         </AnchorPane>
+        <Button fx:id="quitButton" layoutX="534.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleQuitButtonAction" text="Quit" />
         <Label fx:id="instructionsLabel" alignment="CENTER" layoutX="95.0" layoutY="140.0" prefHeight="78.0" prefWidth="423.0" style="-fx-border-color: green; -fx-background-color: #F4EDF4;" text="Press 'Enter' to begin" textAlignment="CENTER" textFill="#3cb57f">
             <font>
                 <Font name="Avenir Next Bold" size="34.0" />

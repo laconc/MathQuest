@@ -8,10 +8,10 @@
 <AnchorPane id="AnchorPane" prefHeight="378.0" prefWidth="555.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.mathquest.StatsController">
    <children>
       <Button fx:id="mainMenuButton" layoutX="440.0" layoutY="328.0" mnemonicParsing="false" onAction="#handleMainMenuButtonAction" text="Main Menu" />
-      <ChoiceBox fx:id="usernameChoicebox" layoutX="37.0" layoutY="37.0" prefWidth="150.0" visible="false" />
+      <ChoiceBox fx:id="usernameChoiceBox" layoutX="37.0" layoutY="37.0" prefWidth="150.0" visible="false" />
       <Label fx:id="usernameLabel" layoutX="37.0" layoutY="42.0" visible="false" />
-      <Label fx:id="currentLevelLabel" layoutX="37.0" layoutY="81.0" text="Current Stage:" />
-      <Label fx:id="levelsClearedLabel" layoutX="37.0" layoutY="124.0" text="Stages Cleared:" />
+      <Label fx:id="gamesPlayedLabel" layoutX="37.0" layoutY="81.0" text="Games Played:" />
+      <Label fx:id="levelsCompletedLabel" layoutX="37.0" layoutY="124.0" text="Stages Cleared:" />
       <Label fx:id="totalCorrectLabel" layoutX="37.0" layoutY="165.0" text="Total Correct Answers:" />
       <Label fx:id="totalIncorrectLabel" layoutX="37.0" layoutY="210.0" text="Total Incorrect Answers:" />
       <Label fx:id="mostCorrectLabel" layoutX="313.0" layoutY="60.0" text="Most Correct Problem Type:" />

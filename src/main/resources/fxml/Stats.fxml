@@ -5,23 +5,23 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="378.0" prefWidth="555.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.mathquest.StatsController">
+<AnchorPane id="AnchorPane" prefHeight="340.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="team.mathquest.StatsController">
    <children>
-      <Button fx:id="mainMenuButton" layoutX="440.0" layoutY="328.0" mnemonicParsing="false" onAction="#handleMainMenuButtonAction" text="Main Menu" />
-      <ChoiceBox fx:id="usernameChoiceBox" layoutX="37.0" layoutY="37.0" prefWidth="150.0" visible="false" />
-      <Label fx:id="usernameLabel" layoutX="37.0" layoutY="42.0" visible="false" />
-      <Label fx:id="gamesPlayedLabel" layoutX="37.0" layoutY="81.0" text="Games Played:" />
-      <Label fx:id="levelsCompletedLabel" layoutX="37.0" layoutY="124.0" text="Stages Cleared:" />
-      <Label fx:id="totalCorrectLabel" layoutX="37.0" layoutY="165.0" text="Total Correct Answers:" />
-      <Label fx:id="totalIncorrectLabel" layoutX="37.0" layoutY="210.0" text="Total Incorrect Answers:" />
-      <Label fx:id="mostCorrectLabel" layoutX="313.0" layoutY="60.0" text="Most Correct Problem Type:" />
-      <Label fx:id="leastCorrectLabel" layoutX="313.0" layoutY="111.0" text="Least Correct Problem Type:" />
-      <Label fx:id="addProblemsSolvedLabel" layoutX="313.0" layoutY="152.0" text="Addition Problems Solved:" />
-      <Label fx:id="divProblemsSolvedLabel" layoutX="313.0" layoutY="258.0" text="Division Problems Solved:" />
-      <Label fx:id="averageSolveTimeLabel" layoutX="37.0" layoutY="262.0" text="Average Time to Solve a Problem:" />
-      <Label fx:id="accuracyLabel" layoutX="313.0" layoutY="34.0" text="Overall Accuracy:" />
-      <Label fx:id="subProblemsSolvedLabel" layoutX="313.0" layoutY="183.0" text="Subtraction Problems Solved:" />
-      <Label fx:id="mulProblemsSolvedLabel" layoutX="313.0" layoutY="220.0" text="Multiplication Problems Solved:" />
-      <Label fx:id="totalTimeLabel" layoutX="37.0" layoutY="238.0" text="Total Play Time:" />
+      <Button fx:id="mainMenuButton" layoutX="526.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleMainMenuButtonAction" text="Main Menu" />
+      <ChoiceBox fx:id="usernameChoiceBox" layoutX="37.0" layoutY="29.0" prefWidth="150.0" visible="false" />
+      <Label fx:id="usernameLabel" layoutX="37.0" layoutY="35.0" visible="false" />
+      <Label fx:id="gamesPlayedLabel" layoutX="37.0" layoutY="70.0" text="Games Played:" />
+      <Label fx:id="levelsCompletedLabel" layoutX="37.0" layoutY="105.0" text="Stages Cleared:" />
+      <Label fx:id="totalCorrectLabel" layoutX="37.0" layoutY="140.0" text="Total Correct Answers:" />
+      <Label fx:id="totalIncorrectLabel" layoutX="37.0" layoutY="175.0" text="Total Incorrect Answers:" />
+      <Label fx:id="mostCorrectLabel" layoutX="350.0" layoutY="70.0" text="Most Correct Problem Type:" />
+      <Label fx:id="leastCorrectLabel" layoutX="350.0" layoutY="105.0" text="Least Correct Problem Type:" />
+      <Label fx:id="addProblemsSolvedLabel" layoutX="350.0" layoutY="140.0" text="Addition Problems Solved:" />
+      <Label fx:id="divProblemsSolvedLabel" layoutX="350.0" layoutY="245.0" text="Division Problems Solved:" />
+      <Label fx:id="averageSolveTimeLabel" layoutX="37.0" layoutY="245.0" text="Average Time to Solve a Problem:" />
+      <Label fx:id="accuracyLabel" layoutX="350.0" layoutY="35.0" text="Overall Accuracy:" />
+      <Label fx:id="subProblemsSolvedLabel" layoutX="350.0" layoutY="175.0" text="Subtraction Problems Solved:" />
+      <Label fx:id="mulProblemsSolvedLabel" layoutX="350.0" layoutY="210.0" text="Multiplication Problems Solved:" />
+      <Label fx:id="totalTimeLabel" layoutX="37.0" layoutY="210.0" text="Total Play Time:" />
    </children>
 </AnchorPane>

@@ -1,8 +1,8 @@
 package team.mathquest;
 
+import team.mathquest.GameController;
 import team.mathquest.model.DialogBoxController;
 import team.mathquest.model.ReaderWriter;
-import team.mathquest.model.User;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,6 +22,8 @@ public class QuitGameController extends DialogBoxController {
      */
     @FXML
     private void handleSaveButtonAction(ActionEvent event) {
+        ((GameController) getMainApp().getController()).exit();
+        ((GameController) getMainApp().getController()).save();
         rw.updateUserList(getAccount(), 'u');
         getMainApp().showMainMenu(getAccount());
     }
@@ -32,6 +34,7 @@ public class QuitGameController extends DialogBoxController {
      */
     @FXML
     private void handleQuitButtonAction(ActionEvent event) {
+        ((GameController) getMainApp().getController()).exit();
         getMainApp().showMainMenu(getAccount());
     }
     

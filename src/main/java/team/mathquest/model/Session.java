@@ -11,7 +11,7 @@ public class Session {
     private int levelsCompleted;
     private int[] problemsSolved;
     private int[] problemsMissed;
-    private long totalTime;
+    private double totalTime;
     
     public Session() {
         levelsCompleted = 0;
@@ -166,7 +166,7 @@ public class Session {
     /**
      * @param totalTime sets the total time spent solving problems
      */
-    public void setTotalTime(long totalTime) {
+    public void setTotalTime(double totalTime) {
         this.totalTime = totalTime;
     }
     

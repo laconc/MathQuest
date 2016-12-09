@@ -26,13 +26,4 @@ public class Admin extends Account {
     public char getType() {
         return 'a';
     }
-
-    /**
-     * @return accesses the statistics for the users that they are overseeing
-     */
-    @Override
-    public String viewStats() {
-        // TODO write the function
-        return "Working on it";
-    }
 }

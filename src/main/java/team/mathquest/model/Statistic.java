@@ -2,8 +2,8 @@ package team.mathquest.model;
 
 import team.mathquest.model.MathProblem.ProblemType;
 
-import java.time.Duration;
 import java.util.List;
+import static jdk.nashorn.internal.objects.NativeMath.round;
 
 /**
  * Performs all of the calculations for the user statistics.
@@ -12,7 +12,9 @@ import java.util.List;
 public class Statistic {
     
     private List<Session> gameHistory;
-    
+    private String[] types = { "Addition", "Subtraction",
+                               "Multiplication", "Division" };
+
     public Statistic (List<Session> gameHistory) {
         this.gameHistory = gameHistory;
     }
@@ -62,60 +64,90 @@ public class Statistic {
         else
             return "";
     }
-
-    // TODO isn't returning the correct value
-    public String getTotalTime() {
-        long totalTime = 0;
+    
+    private double calculateTotalTime() {
+        double totalTime = 0;
         if (!gameHistory.isEmpty()) {
             for (Session session : gameHistory)
-                totalTime += Duration.between(session.getSessionStartTime(),
-                        session.getSessionEndTime()).toMinutes();
-            return Long.toString(totalTime);
+                totalTime += session.getTotalTime();
         }
+        return totalTime;
+    }
+
+    public String getTotalTime() {
+        if (!gameHistory.isEmpty())
+            return String.format("%.1f", calculateTotalTime()) + " seconds";
         else
             return "";
     }
 
-    // TODO finish this method
     public String getAverageSolveTime() {
         if (!gameHistory.isEmpty()) {
-            //long averageSolveTime;
-            //return Long.toString(averageSolveTime);
-            return "";
+            double averageSolveTime = calculateTotalTime()
+                                    / (Double.parseDouble(getTotalCorrect())
+                                    + Double.parseDouble(getTotalMissed()));
+            return String.format("%.1f", averageSolveTime) + " seconds";
         }
         else
             return "";
     }
 
-    // TODO BUG returns 0 every time
     public String getAccuracy() {
         if (!gameHistory.isEmpty()) {
-            long accuracy = (Long.parseLong(getTotalCorrect())
-                    / (Long.parseLong(getTotalCorrect())
-                    + Long.parseLong(getTotalMissed()))) * 100;
-            return (Long.toString(accuracy) + "%");
+            double accuracy = (Double.parseDouble(getTotalCorrect())
+                    / (Double.parseDouble(getTotalCorrect())
+                    + Double.parseDouble(getTotalMissed()))) * 100;
+            return (String.format("%.1f", accuracy) + "%");
         }
         else
             return "";
     }
 
-    // TODO finish this method
     public String getMostCorrect() {
+        int[] correct = { 0, 0, 0, 0 };
         if (!gameHistory.isEmpty()) {
-            // for (Session session : gameHistory)
-            // return Integer.toString(0);
-            return "";
+            for (Session session : gameHistory) {
+                correct[0] += session.getProblemsSolved(ProblemType.ADDITION);
+                correct[1] += session.getProblemsSolved(ProblemType.SUBTRACTION);
+                correct[2] += session.getProblemsSolved(ProblemType.MULTIPLICATION);
+                correct[3] += session.getProblemsSolved(ProblemType.DIVISION);
+            }
+            
+            int indexMostCorrect = 0;
+            int max = correct[0];
+            for (int i = 1; i < correct.length; i++) {
+                if (correct[i] > max) {
+                    indexMostCorrect = i;
+                    max = correct[i];
+                }
+            }
+            
+            return types[indexMostCorrect];
         }
         else
             return "";
     }
 
-    // TODO finish this method
     public String getLeastCorrect() {
+        int[] missed = { 0, 0, 0, 0 };
         if (!gameHistory.isEmpty()) {
-            // for (Session session : gameHistory)
-            // return Integer.toString(0);
-            return "";
+            for (Session session : gameHistory) {
+                missed[0] += session.getProblemsMissed(ProblemType.ADDITION);
+                missed[1] += session.getProblemsMissed(ProblemType.SUBTRACTION);
+                missed[2] += session.getProblemsMissed(ProblemType.MULTIPLICATION);
+                missed[3] += session.getProblemsMissed(ProblemType.DIVISION);
+            }
+            
+            int indexMostCorrect = 0;
+            int max = missed[0];
+            for (int i = 1; i < missed.length; i++) {
+                if (missed[i] > max) {
+                    indexMostCorrect = i;
+                    max = missed[i];
+                }
+            }
+            
+            return types[indexMostCorrect];
         }
         else
             return "";

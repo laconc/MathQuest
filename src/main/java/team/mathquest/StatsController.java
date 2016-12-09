@@ -87,7 +87,7 @@ public class StatsController extends Controller {
                 + stats.getTotalCorrect());
         totalIncorrectLabel.setText("Total Incorrect Answers: "
                 + stats.getTotalMissed());
-        totalTimeLabel.setText("Total Time: "
+        totalTimeLabel.setText("Total Play Time: "
                 + stats.getTotalTime());
         averageSolveTimeLabel.setText("Average Time to Solve a Problem: "
                 + stats.getAverageSolveTime());

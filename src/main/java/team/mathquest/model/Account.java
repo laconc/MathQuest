@@ -29,8 +29,6 @@ public abstract class Account {
      * @return the type of account, 'a' for admin, 'u' for user
      */
     public abstract char getType();
-    
-    public abstract String viewStats();
 
     /**
      * @return the account's name

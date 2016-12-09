@@ -68,7 +68,7 @@ public class GameController extends Controller {
     private MathProblem problem;
     private Session session = new Session();
     private boolean isPaused = true;
-    private long totalTime = 0;
+    private double totalTime = 0;
     private LocalTime time;
     
     @Override
@@ -255,22 +255,14 @@ public class GameController extends Controller {
      */
     @FXML
     private void handleQuitButtonAction(ActionEvent event) {
-        // TODO remove in favor of exit()
-        if (time != null)
-            totalTime += Duration.between(time, LocalTime.now()).getSeconds();
-        session.setTotalTime(totalTime);
-        session.setSessionEndTime(LocalDateTime.now());
-        session.incrementGamesPlayed();
-        ((User) getAccount()).addHistorySession(session);
-        // --------
         getMainApp().showQuitGame(getAccount());
     }
     
-    // TODO find a way to execute from QuitGameController
-    // if user quits
     public void exit() {
-        // if they choose to save and quit
-        getTimer().stopTimer(); // if running
+        getTimer().stopTimer();
+    }
+    
+    public void save() {
         if (time != null)
             totalTime += Duration.between(time, LocalTime.now()).getSeconds();
         session.setTotalTime(totalTime);

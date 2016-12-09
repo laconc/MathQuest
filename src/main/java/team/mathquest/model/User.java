@@ -70,15 +70,6 @@ public class User extends Account {
     }
 
     /**
-     * @return statistics for this user
-     */
-    @Override
-    public String viewStats() {
-        // TODO write the function
-        return "Working on it";
-    }
-
-    /**
      * @return this user's game history
      */
     public List<Session> getGameHistory() {

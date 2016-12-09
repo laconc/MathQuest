@@ -16,6 +16,7 @@ public class MainApp extends Application {
 
     private Stage mainStage;
     private Scene scene;
+    private Controller controller;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -148,7 +149,7 @@ public class MainApp extends Application {
 
             // gives the controller access to the main app & passes the
             // account info
-            Controller controller = loader.getController();
+            controller = loader.getController();
             controller.setMainApp(this);
             controller.start(account);
 
@@ -178,10 +179,10 @@ public class MainApp extends Application {
             
             // gives the controller access to the main app & passes it a
             // reference to itself
-            DialogBoxController controller = loader.getController();
-            controller.setMainApp(this);
-            controller.setDialogStage(dialogStage);
-            controller.start(account);
+            DialogBoxController dialogBoxController = loader.getController();
+            dialogBoxController.setMainApp(this);
+            dialogBoxController.setDialogStage(dialogStage);
+            dialogBoxController.start(account);
 
             dialogStage.showAndWait();
             
@@ -200,6 +201,13 @@ public class MainApp extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+    
+    /**
+     * @return the current controller
+     */
+    public Controller getController() {
+        return controller;
     }
 
     /**

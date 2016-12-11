@@ -58,7 +58,7 @@
           1,
           0
         ],
-        "totalTime": 125
+        "totalTime": 125.0
       },
       {
         "sessionStartTime": {
@@ -101,7 +101,7 @@
           0,
           0
         ],
-        "totalTime": 11
+        "totalTime": 11.0
       },
       {
         "sessionStartTime": {
@@ -144,7 +144,7 @@
           0,
           0
         ],
-        "totalTime": 2
+        "totalTime": 2.0
       },
       {
         "sessionStartTime": {
@@ -187,7 +187,7 @@
           0,
           0
         ],
-        "totalTime": 33
+        "totalTime": 33.0
       },
       {
         "sessionStartTime": {
@@ -230,7 +230,7 @@
           1,
           0
         ],
-        "totalTime": 80
+        "totalTime": 80.0
       },
       {
         "sessionStartTime": {
@@ -273,7 +273,7 @@
           0,
           0
         ],
-        "totalTime": 22
+        "totalTime": 22.0
       }
     ],
     "level": 2,
@@ -344,8 +344,52 @@
         "multiplication": true
       }
     },
-    "gameHistory": [],
-    "level": 1,
+    "gameHistory": [
+      {
+        "sessionStartTime": {
+          "date": {
+            "year": 2016,
+            "month": 12,
+            "day": 9
+          },
+          "time": {
+            "hour": 21,
+            "minute": 40,
+            "second": 14,
+            "nano": 331000000
+          }
+        },
+        "sessionEndTime": {
+          "date": {
+            "year": 2016,
+            "month": 12,
+            "day": 9
+          },
+          "time": {
+            "hour": 21,
+            "minute": 41,
+            "second": 20,
+            "nano": 481000000
+          }
+        },
+        "gamesPlayed": 1,
+        "levelsCompleted": 1,
+        "problemsSolved": [
+          13,
+          12,
+          0,
+          0
+        ],
+        "problemsMissed": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "totalTime": 57.0
+      }
+    ],
+    "level": 2,
     "name": "Greg Luckenbach",
     "username": "greg",
     "pass": "1234"
